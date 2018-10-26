@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Observable} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'df-handcraft';
+  products: Observable<any[]>;
+  data: any;
+  constructor(private db: AngularFirestore) {
+    this.products = db.collection('products').valueChanges();
+    this.products.subscribe(data => {
+      console.log(data);
+    });
+  }
 }
