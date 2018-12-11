@@ -1,29 +1,24 @@
-<div class="row align-items-center">
-  <div class="col-6">
+<div class="row">
+  <div class="col-12 col-md-6 col-lg-4 col-product" *ngFor="let product of data">
     <mat-card>
-      <mat-card-header>
+      <mat-card-header class="product-header">
         <mat-card-title>
-          Title
+          {{product.name}}
         </mat-card-title>
+        <mat-card-subtitle>
+          {{product.category}}
+        </mat-card-subtitle>
       </mat-card-header>
-
+      <img mat-card-image src="../../../assets/images/df-sample.jpg" alt="Sample Image">
       <mat-card-content>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget lacus in justo sagittis sollicitudin et sed tellus. Curabitur quis augue et lacus accumsan elementum. Integer tincidunt, erat ut finibus scelerisque, lectus dolor scelerisque odio, eget malesuada odio dolor eget magna. Duis viverra sagittis vestibulum. Pellentesque vitae vehicula ex. Ut interdum, erat vel gravida convallis, dui lacus iaculis leo, ac porttitor enim purus vel justo. Aenean fringilla fringilla orci, et tincidunt elit aliquam vel. Aliquam aliquam facilisis arcu. Aliquam suscipit bibendum condimentum. Ut ultricies viverra turpis sit amet hendrerit. Maecenas aliquet dictum pretium. Nunc euismod erat velit, non sollicitudin diam sagittis sit amet. Proin vitae leo nisi. Vivamus id lectus eget eros gravida ultrices. In at ligula ac urna egestas varius. Ut elementum dapibus turpis a aliquet.
+          {{product.description}}
         </p>
       </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary">Detay</button>
+        <button mat-button color="warn">Sipariş Ver</button>
+      </mat-card-actions>
     </mat-card>
-  </div>
-  <div class="col-6">
-    <button mat-button>buton</button>
-  </div>
-  <div class="col-6">
-    col 3
-  </div>
-  <div class="col-6">
-    col 4
-  </div>
-  <div class="col-6">
-    col 5
   </div>
 </div>
