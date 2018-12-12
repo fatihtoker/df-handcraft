@@ -15,6 +15,7 @@ export class HomeComponent {
     this.products = db.collection('products').valueChanges();
     this.products.subscribe(data => {
       this.data = data;
+      console.log(this.data);
     });
   }
 }

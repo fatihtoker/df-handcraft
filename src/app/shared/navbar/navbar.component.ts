@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {faChevronCircleDown} from '@fortawesome/free-solid-svg-icons';
+import {MatIconRegistry} from '@angular/material';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +8,9 @@ import {faChevronCircleDown} from '@fortawesome/free-solid-svg-icons';
 })
 export class NavbarComponent implements OnInit {
 
-  faDown = faChevronCircleDown;
-
-  constructor() { }
-
+  constructor(private matIconRegistry: MatIconRegistry) {
+    matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+  }
   ngOnInit() {
   }
 
