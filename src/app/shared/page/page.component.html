@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container">
   <router-outlet></router-outlet>
+  <button [style.display]="displayState" (click)="onGoTopClick()" appScrollListener (pageScroll)="onScroll($event)" mat-fab class="goTopButton mat-elevation-z10">
+    <mat-icon fontSet="fa" fontIcon="fa-arrow-up"></mat-icon>
+  </button>
 </div>
 

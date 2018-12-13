@@ -1,16 +1,30 @@
-body {
-}
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
 .container {
   text-align: center;
+  margin-top: 15rem;
+
 }
 header a {
   color: white;
+}
+app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
 .navbar-toggler-icon {
   color: white;
 }
 .col-product {
   margin-top: 2rem;
+  * {
+    font-family: 'Poiret One', cursive !important;
+    font-size: 20px !important;
+    line-height: 2.5rem !important;
+  }
 }
 .product-header {
   text-align: left;
@@ -44,8 +58,12 @@ li {
     padding: 16px;
     text-decoration: none;
     font-size: 3.5rem;
+    cursor: pointer;
     &:hover {
       color: $df-gold;
+    }
+    .phone-number {
+      font-size: 2rem;
     }
   }
 }
@@ -64,4 +82,13 @@ li {
 }
 .search-icon {
   font-size: 3.5rem;
+}
+.goTopButton {
+  cursor: pointer;
+  position: fixed !important;
+  bottom: 1.5em;
+  right: 1.5em;
+  background-color: $df-gold !important;
+  font-size: 2rem !important;
+  z-index: 2;
 }
