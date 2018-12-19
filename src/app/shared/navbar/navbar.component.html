@@ -18,9 +18,6 @@
           <li>
             <a>
               <i class="fa fa-whatsapp"></i>
-              <span class="phone-number">
-                / +905383130883
-              </span>
             </a>
           </li>
         </ul>
@@ -30,7 +27,7 @@
       <span class="search-input">
         <mat-form-field appearance="outline">
           <mat-label>Arama</mat-label>
-          <input type="text" matInput placeholder="Ürün, kategori...">
+          <input type="text" matInput placeholder="Ürün, kategori..." [ngModel]="query" (ngModelChange)="onChange($event)">
           <mat-icon matSuffix fontSet="fa" fontIcon="fa-search"></mat-icon>
         </mat-form-field>
       </span>

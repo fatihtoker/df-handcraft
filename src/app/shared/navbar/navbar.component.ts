@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatIconRegistry} from '@angular/material';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {DataService} from '../data-service/data.service';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -21,11 +24,16 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     ])
   ]
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   toolbarState = 'show';
   previousPosition = 0;
-  constructor(private matIconRegistry: MatIconRegistry) {
+  query = '';
+  constructor(private matIconRegistry: MatIconRegistry, private dataService: DataService) {
     matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+   // this.dataService.dataSource$.pipe(debounceTime(500), distinctUntilChanged());
+  }
+  ngOnInit() {
+    this.dataService.updateData('');
   }
   onPageScroll(scrollPosition) {
 
@@ -35,5 +43,8 @@ export class NavbarComponent {
       this.toolbarState = 'hide';
     }
     this.previousPosition = scrollPosition;
+  }
+  onChange(query: string) {
+    this.dataService.updateData(query);
   }
 }
