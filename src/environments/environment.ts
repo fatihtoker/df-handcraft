@@ -4,13 +4,9 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: 'AIzaSyCXKy0acDplkld6cEFRoC2Bdi9vdHMX7yM',
-    authDomain: 'df-handcraft.firebaseapp.com',
-    databaseURL: 'https://df-handcraft.firebaseio.com',
-    projectId: 'df-handcraft',
-    storageBucket: 'df-handcraft.appspot.com',
-    messagingSenderId: '515081345793'
+  dfApi: {
+    baseURL: 'api',
+    version: 'v1'
   }
 };
 

@@ -30,7 +30,6 @@ export class NavbarComponent implements OnInit {
   query = '';
   constructor(private matIconRegistry: MatIconRegistry, private dataService: DataService) {
     matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
-   // this.dataService.dataSource$.pipe(debounceTime(500), distinctUntilChanged());
   }
   ngOnInit() {
     this.dataService.updateData('');

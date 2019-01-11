@@ -1,42 +1,27 @@
-import { Component } from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {switchMap} from 'rxjs/internal/operators';
-import {DataService} from '../../shared/data-service/data.service';
 import {ProductModel} from '../product-detail/product.model';
+import {ApiService} from '../../shared/api/api.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-
-  products$: Observable<ProductModel[]>;
-  name$ = new BehaviorSubject<string>(null);
-  data: any;
-  constructor(private db: AngularFirestore, private title: Title, dataService: DataService ) {
-    // this.products = db.collection('products').valueChanges();
-    /*this.products.subscribe(data => {
-      this.data = data;
-    });*/
-
-    this.products$ = this.name$.pipe(
-      switchMap(query =>
-        this.db.collection<ProductModel>('products', ref => ref.orderBy('name').startAt(query)).valueChanges()
-      )
-    );
-    dataService.getDataObservable().subscribe(data => {
-      this.name$.next(data);
-      }
-    );
-    this.products$.subscribe(items => {
-      console.log(items);
-    }, err => {
-      console.log(err);
-    });
-
+export class HomeComponent implements OnInit {
+  products: ProductModel[] = [];
+  constructor(private title: Title, private apiService: ApiService) {
     this.title.setTitle('Anasayfa - DF Handcraft');
+  }
+  ngOnInit() {
+    this.apiService.get('products').subscribe(response => {
+      for (const model of response.data) {
+        this.products.push(new ProductModel(model));
+        console.log(this.products);
+      }
+    }, err => {
+      console.log('hata!', err);
+    });
+    console.log(this.products);
   }
 }

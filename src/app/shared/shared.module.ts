@@ -6,12 +6,14 @@ import {RouterModule} from '@angular/router';
 import {MatButtonModule, MatIconModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import { ScrollListenerDirective } from './scroll-listener/scroll-listener.directive';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatInputModule,
     MatIconModule,

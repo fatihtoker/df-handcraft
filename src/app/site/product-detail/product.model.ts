@@ -1,7 +1,18 @@
-export interface ProductModel {
+export class ProductModel {
+  id: number;
   name?: string;
   category?: string;
   description?: string;
   onSale?: boolean;
   price?: number;
+  constructor(model: any) {
+    if (model) {
+      this.id = model.id;
+      this.name = model.name;
+      this.category = model.category;
+      this.description = model.description;
+      this.onSale = model.on_sale;
+      this.price = model.price;
+    }
+  }
 }
