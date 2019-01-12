@@ -1,7 +1,7 @@
 export class ProductModel {
   id: number;
   name?: string;
-  category?: string;
+  category?: any;
   description?: string;
   onSale?: boolean;
   price?: number;

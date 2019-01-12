@@ -17,11 +17,9 @@ export class HomeComponent implements OnInit {
     this.apiService.get('products').subscribe(response => {
       for (const model of response.data) {
         this.products.push(new ProductModel(model));
-        console.log(this.products);
       }
     }, err => {
       console.log('hata!', err);
     });
-    console.log(this.products);
   }
 }
