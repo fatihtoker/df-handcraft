@@ -94,3 +94,9 @@ li {
   font-size: 2rem !important;
   z-index: 2;
 }
+.card-product{
+  transition: transform .3s;
+  &:hover {
+    transform: scale(1.015);
+  }
+}

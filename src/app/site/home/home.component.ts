@@ -10,6 +10,7 @@ import {ApiService} from '../../shared/api/api.service';
 })
 export class HomeComponent implements OnInit {
   products: ProductModel[] = [];
+  isHovered = [false];
   constructor(private title: Title, private apiService: ApiService) {
     this.title.setTitle('Anasayfa - DF Handcraft');
   }
@@ -21,5 +22,11 @@ export class HomeComponent implements OnInit {
     }, err => {
       console.log('hata!', err);
     });
+  }
+  mouseEntered(id: any) {
+    this.isHovered[id] = true;
+  }
+  mouseLeft(id: any) {
+    this.isHovered[id] = false;
   }
 }
