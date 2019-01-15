@@ -25,11 +25,20 @@
     </mat-toolbar-row>
     <mat-toolbar-row [@scrollAnimation]="toolbarState" class="mat-elevation-z2" appScrollListener (pageScroll)="onPageScroll($event)">
       <span class="search-input">
-        <mat-form-field appearance="outline">
-          <mat-label>Arama</mat-label>
-          <input type="text" matInput placeholder="Ürün, kategori..." [ngModel]="query" (ngModelChange)="onChange($event)">
-          <mat-icon matSuffix fontSet="fa" fontIcon="fa-search"></mat-icon>
-        </mat-form-field>
+        <form [formGroup]="productForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Arama</mat-label>
+            <input type="text" matInput placeholder="Ürün, kategori..." [matAutocomplete]="autoGroup" formControlName="productGroup">
+            <mat-autocomplete #autoGroup="matAutocomplete">
+              <mat-optgroup *ngFor="let group of productGroupOptions | async" [label]="group.category">
+                <mat-option *ngFor="let product of group.products" [value]="product.name">
+                  {{product.name + '   |   ' + product.price + '&#8378;'}}
+                </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+            <mat-icon matSuffix fontSet="fa" fontIcon="fa-search"></mat-icon>
+          </mat-form-field>
+        </form>
       </span>
     </mat-toolbar-row>
   </mat-toolbar>
