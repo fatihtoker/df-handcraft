@@ -45,7 +45,6 @@ export class ApiService {
     const statusCode: number = err.status;
     const message: string = err.error.message ? err.error.message : err.statusText;
     const errors: any = err.error.errors ? err.error.errors : [];
-    console.log(err);
 
     const error: any = { statusCode: statusCode, message: message, errors: errors };
 

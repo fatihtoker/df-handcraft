@@ -21,13 +21,14 @@ import { MouseHoverListenerDirective } from './mouse-hover-listener/mouse-hover-
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     MatToolbarModule,
     MatInputModule,
     MatIconModule,
     MatButtonModule,
     MatAutocompleteModule,
-    MatOptionModule,
+    MatOptionModule
   ],
   declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective],
   exports: [PageComponent]
