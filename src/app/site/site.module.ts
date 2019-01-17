@@ -7,7 +7,7 @@ import {SharedModule} from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
-import {MatButtonModule, MatCardModule, MatProgressSpinnerModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatChipsModule, MatProgressSpinnerModule, MatTabsModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -16,7 +16,8 @@ import {MatButtonModule, MatCardModule, MatProgressSpinnerModule, MatTabsModule}
     MatCardModule,
     MatButtonModule,
     MatTabsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   declarations: [ProductDetailComponent, HomeComponent]
 })

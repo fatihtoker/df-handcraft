@@ -19,7 +19,11 @@
             </mat-card-header>
             <img mat-card-image src="../../../assets/images/df-sample.jpg" alt="Sample Image">
             <ng-container *ngIf="isHovered[model.id]">
-              <button *ngIf="false" mat-raised-button>HEY</button>
+                <mat-chip-list class="desc-field">
+                  <mat-chip selected color="primary">Ürün Kodu: {{model.id}}</mat-chip>
+                  <mat-chip color="accent" selected>{{model.price + ' &#8378;'}}</mat-chip>
+                </mat-chip-list>
+                <span class="desc-text"></span>
             </ng-container>
             <mat-card-content>
               <p>

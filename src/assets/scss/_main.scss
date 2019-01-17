@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
 
 .container {
   text-align: center;
@@ -20,18 +20,13 @@ app-navbar {
   right: 0;
   z-index: 2;
 }
-.jumbotron {
-  margin-bottom: 0;
-  position: relative;
-  padding: 0;
-}
 .navbar-toggler-icon {
   color: white;
 }
 .col-product {
   margin-top: 2rem;
   * {
-    font-family: 'Poiret One', cursive !important;
+    font-family: 'Raleway', sans-serif !important;
     font-size: 20px !important;
     line-height: 2.5rem !important;
   }
@@ -110,11 +105,33 @@ li {
     transform: scale(1.015);
   }
   cursor: pointer;
+  z-index: 2;
 }
 .spinner {
   position: fixed !important;
   top: 50%;
   left: 50%;
-  /* bring your own prefixes */
   transform: translate(-50%, -50%);
+}
+.desc-field {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30rem;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.80);
+  font-size: 20px;
+  z-index: 999;
+  .desc-text {
+    position: absolute;
+    top: 10px;
+  }
+}
+.desc-field mat-chip {
+  color: white !important;
+}
+.mat-chip-list-wrapper {
+  position: absolute;
+  top: 6px;
+  left: 20%;
 }
