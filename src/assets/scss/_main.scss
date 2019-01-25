@@ -24,7 +24,8 @@ app-navbar {
   color: white;
 }
 .col-product {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   * {
     font-family: 'Raleway', sans-serif !important;
     font-size: 20px !important;
@@ -100,12 +101,14 @@ li {
   z-index: 2;
 }
 .card-product{
+  height: 600px;
   transition: transform .3s;
   &:hover {
     transform: scale(1.015);
   }
   cursor: pointer;
   z-index: 2;
+  overflow: hidden;
 }
 .spinner {
   position: fixed !important;
@@ -134,4 +137,7 @@ li {
   position: absolute;
   top: 6px;
   left: 20%;
+}
+.mat-tab-body-content {
+  overflow: hidden !important;
 }
