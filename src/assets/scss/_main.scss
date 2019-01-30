@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200|Roboto:100|Ubuntu:300');
 
 .container {
   text-align: center;
@@ -27,7 +27,7 @@ app-navbar {
   margin-top: 1rem;
   margin-bottom: 1rem;
   * {
-    font-family: 'Raleway', sans-serif !important;
+    font-family: 'Ubuntu', sans-serif !important;
     font-size: 20px !important;
     line-height: 2.5rem !important;
   }
