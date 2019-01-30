@@ -57,14 +57,18 @@ export class NavbarComponent implements OnInit {
       });
     }
   ngOnInit() {
+    this.onChange();
   }
   onSubmit() {
     this.dataService.updateData(this.productForm.getRawValue().productGroup);
-    this.router.navigate(['/']);
+  }
+  onChange() {
+    this.productForm.get('productGroup').valueChanges.subscribe(value => {
+      this.dataService.updateData(value);
+    });
   }
   optionSelected(event: MatAutocompleteSelectedEvent) {
     this.dataService.updateData(event.option.value);
-    this.router.navigate(['/']);
   }
   init (data) {
     this.productGroups = data;

@@ -5,7 +5,7 @@
     mode="indeterminate">
   </mat-progress-spinner>
   <mat-tab-group *ngIf="!loading">
-    <mat-tab label="Çok Satanlar">
+    <mat-tab label="Tüm Ürünler">
       <div class="mat-elevation-z4">
         <div class="col-12 col-md-6 col-lg-4 col-product" *ngFor="let model of products" >
           <mat-card class="card-product" (mouseenter)="mouseEntered(model.id)" (mouseleave)="mouseLeft(model.id)" [routerLink]="model.id + '/detay'">
@@ -32,6 +32,11 @@
             </mat-card-content>
           </mat-card>
         </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Çok Satanlar">
+      <div class="mat-elevation-z4">
+        Çok Satanlar
       </div>
     </mat-tab>
     <mat-tab label="Son Eklenenler">

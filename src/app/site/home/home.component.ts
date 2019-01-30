@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private title: Title, private apiService: ApiService, private dataService: DataService) {
     this.title.setTitle('Anasayfa - DF Handcraft');
     this.dataSubscription = this.dataService.getDataObservable().subscribe(data => {
-
       if (data) {
         this.queryChanged.next(data);
       } else {
@@ -34,7 +33,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.querySubscription = this.queryChanged.pipe(debounceTime(500), distinctUntilChanged())
       .subscribe((query: any) => {
         this.query = query;
-        console.log(query);
 
         let refresh = false;
 
