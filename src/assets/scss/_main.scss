@@ -18,7 +18,7 @@ app-navbar {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 4;
 }
 .navbar-toggler-icon {
   color: white;
@@ -102,10 +102,10 @@ li {
 }
 .card-product{
   height: 600px;
-  transition: transform .3s;
-  &:hover {
+  // transition: transform .3s;
+  /*&:hover {
     transform: scale(1.015);
-  }
+  }*/
   cursor: pointer;
   z-index: 2;
   overflow: hidden;
@@ -120,7 +120,7 @@ li {
   position: absolute;
   left: 0;
   right: 0;
-  top: 30rem;
+  top: 46rem;
   height: 45px;
   background: rgba(255, 255, 255, 0.80);
   font-size: 20px;

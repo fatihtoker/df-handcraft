@@ -1,14 +1,34 @@
 <div class="row">
   <mat-progress-spinner *ngIf="loading"
-    class="spinner"
-    color="primary"
-    mode="indeterminate">
+                        class="spinner"
+                        color="primary"
+                        mode="indeterminate">
   </mat-progress-spinner>
-  <mat-tab-group *ngIf="!loading">
-    <mat-tab label="Tüm Ürünler">
+  <div class="col-6" *ngIf="!loading">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Kategoriler
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Fiyat Aralığı
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="col-6">
+    <div class="row">
       <div class="mat-elevation-z4">
         <div class="col-12 col-md-6 col-lg-4 col-product" *ngFor="let model of products" >
-          <mat-card class="card-product" (mouseenter)="mouseEntered(model.id)" (mouseleave)="mouseLeft(model.id)" [routerLink]="model.id + '/detay'">
+          <mat-card class="card-product" [routerLink]="model.id + '/detay'">
             <mat-card-header class="product-header">
               <mat-card-title>
                 {{model.name}}
@@ -30,16 +50,6 @@
           </mat-card>
         </div>
       </div>
-    </mat-tab>
-    <mat-tab label="Çok Satanlar">
-      <div class="mat-elevation-z4">
-        Çok Satanlar
-      </div>
-    </mat-tab>
-    <mat-tab label="Son Eklenenler">
-      <div class="mat-elevation-z4">
-        Son Eklenenler
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+    </div>
+  </div>
 </div>

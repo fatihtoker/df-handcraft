@@ -3,18 +3,14 @@ import { CommonModule } from '@angular/common';
 import { PageComponent } from './page/page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {RouterModule} from '@angular/router';
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatIconModule,
-  MatInputModule,
-  MatOptionModule,
-  MatToolbarModule
-} from '@angular/material';
 import { ScrollListenerDirective } from './scroll-listener/scroll-listener.directive';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { MouseHoverListenerDirective } from './mouse-hover-listener/mouse-hover-listener.directive';
+import {SearchComponent} from './search/search.component';
+import {MaterialComponentsModule} from './material-components.module';
+import {AdminPageComponent} from './admin/admin-page/admin-page.component';
+import {AdminLoginComponent} from './admin/admin-login/admin-login.component';
 
 @NgModule({
   imports: [
@@ -23,14 +19,9 @@ import { MouseHoverListenerDirective } from './mouse-hover-listener/mouse-hover-
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    MatOptionModule
+    MaterialComponentsModule
   ],
-  declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective],
-  exports: [PageComponent]
+  declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective, SearchComponent, AdminPageComponent, AdminLoginComponent],
+  exports: [PageComponent, SearchComponent, AdminPageComponent, AdminLoginComponent]
 })
 export class SharedModule { }

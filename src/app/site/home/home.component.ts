@@ -13,8 +13,10 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/internal/operators';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   products: ProductModel[] = [];
+  searchProducts: ProductModel[] = [];
   isHovered = [false];
   loading = false;
+  searchActive = false;
   params = {};
   query: string;
   querySubscription: any;
@@ -23,10 +25,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   private queryChanged: Subject<string> = new Subject<string>();
   constructor(private title: Title, private apiService: ApiService, private dataService: DataService) {
     this.title.setTitle('Anasayfa - DF Handcraft');
-    this.dataSubscription = this.dataService.getDataObservable().subscribe(data => {
+    /*this.dataSubscription = this.dataService.getDataObservable().subscribe(data => {
       if (data) {
+        this.searchActive = true;
         this.queryChanged.next(data);
       } else {
+        this.searchActive = false;
         this.getAllProducts();
       }
     });
@@ -46,26 +50,23 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (refresh) {
           this.loading = true;
           this.params = Object.assign({}, this.params);
-          this.products = [];
+          this.searchProducts = [];
           this.apiSubscription = this.apiService.get('products', undefined, this.params ).subscribe(response => {
             for (const model of response.data) {
-              this.products.push(new ProductModel(model));
+              this.searchProducts.push(new ProductModel(model));
+              //this.products.push(new ProductModel(model));
             }
             this.loading = false;
           }, err => {
             this.loading = false;
           });
         }
-      });
+      });*/
   }
   ngOnInit() {
-    // TODO: get all products when component loaded
-    // this.getAllProducts();
+    this.getAllProducts();
   }
   ngOnDestroy() {
-    this.dataSubscription.unsubscribe();
-    this.apiSubscription.unsubscribe();
-    this.querySubscription.unsubscribe();
   }
   getAllProducts() {
     this.products = [];

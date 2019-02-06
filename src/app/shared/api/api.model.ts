@@ -4,5 +4,5 @@ export interface ApiModel {
   message: string;
   pagination: any;
   status: string;
-  statusCode: number;
+  code: number;
 }

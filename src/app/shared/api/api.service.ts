@@ -42,11 +42,11 @@ export class ApiService {
   }
 
   private handleError(err: HttpErrorResponse) {
-    const statusCode: number = err.status;
+    const code: number = err.status;
     const message: string = err.error.message ? err.error.message : err.statusText;
     const errors: any = err.error.errors ? err.error.errors : [];
 
-    const error: any = { statusCode: statusCode, message: message, errors: errors };
+    const error: any = { code: code, message: message, errors: errors };
 
     this.errorSource.next(error);
 
@@ -75,8 +75,8 @@ export class ApiService {
         catchError(err => this.handleError(err))
       );
   }
-  post(path: string, data: any = {}, baseUrl: string = this.dfApi.baseURL): Observable<any> {
-    return this.http.post(`${baseUrl}/${this.dfApi.version}/${path}`, JSON.stringify(data), { headers: this.headers })
+  post(path: string, data: any = {}, baseUrl: string = this.dfApi.baseURL + this.dfApi.version, headers = this.headers): Observable<any> {
+    return this.http.post(`${baseUrl}/${path}`, JSON.stringify(data), { headers: headers })
       .pipe(
         timeout(30000),
         map(body => this.handleStatus(body)),
