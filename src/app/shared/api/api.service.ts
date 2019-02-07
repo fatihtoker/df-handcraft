@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, ReplaySubject, Subject, throwError} from 'rxjs';
-import {ApiModel} from './api.model';
 import {catchError, map, timeout} from 'rxjs/internal/operators';
 import {environment} from '../../../environments/environment';
 
@@ -75,7 +74,9 @@ export class ApiService {
         catchError(err => this.handleError(err))
       );
   }
-  post(path: string, data: any = {}, baseUrl: string = this.dfApi.baseURL + this.dfApi.version, headers = this.headers): Observable<any> {
+  post(path: string, data: any = {}, baseUrl: string = this.dfApi.baseURL + '/' + this.dfApi.version,
+       headers = this.headers): Observable<any> {
+    console.log(data);
     return this.http.post(`${baseUrl}/${path}`, JSON.stringify(data), { headers: headers })
       .pipe(
         timeout(30000),

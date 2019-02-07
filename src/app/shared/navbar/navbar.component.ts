@@ -66,9 +66,11 @@ export class NavbarComponent implements OnInit {
     this.productForm.get('productGroup').valueChanges.subscribe(value => {
       this.dataService.updateData(value);
     });
+    this.router.navigate(['/']);
   }
   optionSelected(event: MatAutocompleteSelectedEvent) {
     this.dataService.updateData(event.option.value);
+    this.router.navigate(['/']);
   }
   init (data) {
     this.productGroups = data;
