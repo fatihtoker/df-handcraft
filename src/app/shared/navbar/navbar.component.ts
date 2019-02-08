@@ -70,7 +70,6 @@ export class NavbarComponent implements OnInit {
   }
   optionSelected(event: MatAutocompleteSelectedEvent) {
     this.dataService.updateData(event.option.value);
-    this.router.navigate(['/']);
   }
   init (data) {
     this.productGroups = data;

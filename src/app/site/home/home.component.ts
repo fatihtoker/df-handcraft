@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {ProductModel} from '../product-detail/product.model';
 import {ApiService} from '../../shared/api/api.service';
@@ -13,7 +13,6 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/internal/operators';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   products: ProductModel[] = [];
-  isHovered = [false];
   loading = false;
   apiSubscription: any;
   constructor(private title: Title, private apiService: ApiService) {
@@ -31,16 +30,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       for (const model of response.data) {
         this.products.push(new ProductModel(model));
       }
-      console.log(this.products);
       this.loading = false;
     }, err => {
       this.loading = false;
     });
-  }
-  mouseEntered(id: any) {
-    this.isHovered[id] = true;
-  }
-  mouseLeft(id: any) {
-    this.isHovered[id] = false;
   }
 }

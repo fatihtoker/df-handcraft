@@ -5,6 +5,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { HomeComponent } from './home/home.component';
 import {MaterialComponentsModule} from '../shared/material-components.module';
 import {SharedModule} from '../shared/shared.module';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import {SharedModule} from '../shared/shared.module';
     MaterialComponentsModule,
     SharedModule
   ],
-  declarations: [ProductDetailComponent, HomeComponent],
+  declarations: [ProductDetailComponent, HomeComponent, ProductListComponent],
+  exports: [ProductListComponent]
 })
 export class SiteModule { }

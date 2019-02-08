@@ -4,16 +4,15 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService {
   constructor(public auth: AuthService, public router: Router) {
   }
-  canActivate() {
-    console.log(this.auth.isAuthenticated());
-    if (!this.auth.isAuthenticated()) {
-      this.router.navigate(['admin-panel/giris']);
-      // window.location.href = 'admin-panel/giris';
-      return false;
+  async canActivate() {
+    const status = await this.auth.isAuthenticated();
+    if (status && status['code'] === 200) {
+      return true;
     }
-    return true;
+    window.location.href = 'admin-panel/giris';
+    return false;
   }
 }

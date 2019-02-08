@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../../shared/api/api.service';
-import {ReplaySubject, Subject} from 'rxjs';
+import {Observable, ReplaySubject, Subject, Subscription} from 'rxjs';
+import {DataService} from '../../shared/data-service/data.service';
+import {map} from 'rxjs/internal/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   headers: HttpHeaders;
-  status = false;
-
-  constructor(private api: ApiService, private http: HttpClient) {
+  private errorSource: Subject<any>;
+  constructor(private api: ApiService, private http: HttpClient, private dataService: DataService) {
     this.headers = new HttpHeaders({
       'X-Requested-With': 'XMLHttpRequest',
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     });
+    this.errorSource = new ReplaySubject<any>(1);
+  }
+  get error$() {
+    return this.errorSource.asObservable();
   }
   authenticate(credentials: any = {}) {
     const loginUrl = 'admin/login_check';
@@ -30,17 +35,11 @@ export class AuthService {
       'Authorization', 'Bearer ' + token,
     );
     if (token) {
-      this.http.get(checkPath, {headers: checkHeaders})
-        .subscribe(response => {
-          const code = response['code'];
-        if (code === 200) {
-          console.log('200 trueeeE');
-          this.status = true;
-        }
-      }, err => {
-          this.status = false;
-      });
-      return this.status;
+      return this.http.get(checkPath, {headers: checkHeaders}).toPromise()
+        .catch(err => {
+          this.errorSource.next(err);
+        });
     }
+    return false;
   }
 }

@@ -8,6 +8,7 @@ import {ProductModel} from '../../site/product-detail/product.model';
 })
 export class SearchComponent implements OnInit {
 
+  // TODO: use productlist component in template.
   constructor() { }
 
   @Input() products: ProductModel[];
