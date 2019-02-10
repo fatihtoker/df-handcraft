@@ -11,6 +11,7 @@ import {SearchComponent} from './search/search.component';
 import {MaterialComponentsModule} from './material-components.module';
 import {AdminPageComponent} from './admin/admin-page/admin-page.component';
 import {AdminLoginComponent} from './admin/admin-login/admin-login.component';
+import {NbLayoutModule, NbSidebarModule, NbSidebarService} from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -19,9 +20,13 @@ import {AdminLoginComponent} from './admin/admin-login/admin-login.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MaterialComponentsModule
+    MaterialComponentsModule,
+    NbLayoutModule,
+    NbSidebarModule
   ],
-  declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective, SearchComponent, AdminPageComponent, AdminLoginComponent],
-  exports: [PageComponent, SearchComponent, AdminPageComponent, AdminLoginComponent]
+  declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective,
+    SearchComponent, AdminPageComponent, AdminLoginComponent],
+  exports: [PageComponent, SearchComponent, AdminPageComponent, AdminLoginComponent],
+  providers: [NbSidebarService]
 })
 export class SharedModule { }

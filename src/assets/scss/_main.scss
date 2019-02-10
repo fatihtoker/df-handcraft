@@ -175,4 +175,17 @@ li {
   width: 100%;
   color: white !important;
   font-size: 20px !important;
+  font-weight: bold !important;
+}
+.mat-tab-label-content {
+  opacity: 1;
+  font-weight: bold;
+}
+nb-layout-header {
+  nav {
+    height: 6rem !important;
+  }
+}
+nb-layout-column {
+  font-size: 2rem;
 }
