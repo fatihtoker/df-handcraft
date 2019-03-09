@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { AdminPageComponent } from '../shared/admin/admin-page/admin-page.component';
 import {AdminRoutingModule} from './admin-routing.module';
+import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    NbThemeModule.forRoot({ name: 'corporate' }),
+    NbLayoutModule,
   ],
   declarations: [HomeComponent],
   exports: [HomeComponent]

@@ -5,16 +5,17 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { HomeComponent } from './home/home.component';
 import {MaterialComponentsModule} from '../shared/material-components.module';
 import {SharedModule} from '../shared/shared.module';
-import { ProductListComponent } from './product-list/product-list.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
     CommonModule,
     SiteRoutingModule,
     MaterialComponentsModule,
-    SharedModule
+    SharedModule,
+    InfiniteScrollModule
   ],
-  declarations: [ProductDetailComponent, HomeComponent, ProductListComponent],
-  exports: [ProductListComponent]
+  declarations: [ProductDetailComponent, HomeComponent],
+  exports: []
 })
 export class SiteModule { }

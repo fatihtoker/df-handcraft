@@ -15,9 +15,7 @@ import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'corporate' }),
-    NbLayoutModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

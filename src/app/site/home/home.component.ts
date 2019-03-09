@@ -1,10 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {ProductModel} from '../product-detail/product.model';
 import {ApiService} from '../../shared/api/api.service';
-import {DataService} from '../../shared/data-service/data.service';
-import {Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged} from 'rxjs/internal/operators';
+import { ProductModel } from '../../shared/product-list/product.model';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getAllProducts();
   }
   ngOnDestroy() {
+    if (this.apiSubscription)
+      { this.apiSubscription.unsubscribe(); }
   }
   getAllProducts() {
     this.products = [];

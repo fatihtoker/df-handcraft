@@ -6,10 +6,7 @@ import {AdminLoginComponent} from './shared/admin/admin-login/admin-login.compon
 import {AuthGuardService} from './admin/auth-service/auth-guard.service';
 
 const routes: Routes = [
-  {path: '', component: PageComponent, children: [
-      {path: '', loadChildren: './site/site.module#SiteModule'}
-    ]
-  },
+  {path: '', loadChildren: './site/site.module#SiteModule' },
   {path: 'admin-panel/giris', component: AdminLoginComponent},
   {path: 'admin-panel', component: AdminPageComponent, canActivate: [AuthGuardService], children: [
       {path: '', loadChildren: './admin/admin.module#AdminModule'}

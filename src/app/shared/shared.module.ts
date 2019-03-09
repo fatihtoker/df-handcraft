@@ -12,6 +12,7 @@ import {MaterialComponentsModule} from './material-components.module';
 import {AdminPageComponent} from './admin/admin-page/admin-page.component';
 import {AdminLoginComponent} from './admin/admin-login/admin-login.component';
 import {NbLayoutModule, NbSidebarModule, NbSidebarService} from '@nebular/theme';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   imports: [
@@ -25,8 +26,8 @@ import {NbLayoutModule, NbSidebarModule, NbSidebarService} from '@nebular/theme'
     NbSidebarModule
   ],
   declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective,
-    SearchComponent, AdminPageComponent, AdminLoginComponent],
-  exports: [PageComponent, SearchComponent, AdminPageComponent, AdminLoginComponent],
+    SearchComponent, AdminPageComponent, AdminLoginComponent, ProductListComponent],
+  exports: [PageComponent, SearchComponent, AdminPageComponent, AdminLoginComponent, ProductListComponent],
   providers: [NbSidebarService]
 })
 export class SharedModule { }

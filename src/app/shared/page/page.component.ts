@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {MatIconRegistry} from '@angular/material';
-import {ProductModel} from '../../site/product-detail/product.model';
 import {Title} from '@angular/platform-browser';
 import {DataService} from '../data-service/data.service';
 import {ApiService} from '../api/api.service';
 import {debounceTime, distinctUntilChanged} from 'rxjs/internal/operators';
 import {Subject} from 'rxjs';
+import { ProductModel } from '../product-list/product.model';
 
 @Component({
   selector: 'app-page',

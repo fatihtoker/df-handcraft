@@ -106,13 +106,18 @@ li {
   z-index: 2;
 }
 .card-product{
-  height: 600px;
-  // transition: transform .3s;
-  /*&:hover {
-    transform: scale(1.015);
-  }*/
+  max-height: 400px;
+  height: 400px;
+  max-width: 400px;
+  margin: 1rem auto;
+  border: .5px solid gray;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  border-radius: 10px !important;
+  &:hover {
+    border: 1.5px solid $df-gold;
+  }
   cursor: pointer;
-  z-index: 2;
   overflow: hidden;
 }
 .spinner {
