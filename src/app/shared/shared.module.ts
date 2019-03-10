@@ -9,9 +9,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { MouseHoverListenerDirective } from './mouse-hover-listener/mouse-hover-listener.directive';
 import {SearchComponent} from './search/search.component';
 import {MaterialComponentsModule} from './material-components.module';
-import {AdminPageComponent} from './admin/admin-page/admin-page.component';
-import {AdminLoginComponent} from './admin/admin-login/admin-login.component';
-import {NbLayoutModule, NbSidebarModule, NbSidebarService} from '@nebular/theme';
 import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
@@ -21,13 +18,12 @@ import { ProductListComponent } from './product-list/product-list.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MaterialComponentsModule,
-    NbLayoutModule,
-    NbSidebarModule
+    MaterialComponentsModule
+
   ],
   declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective,
-    SearchComponent, AdminPageComponent, AdminLoginComponent, ProductListComponent],
-  exports: [PageComponent, SearchComponent, AdminPageComponent, AdminLoginComponent, ProductListComponent],
-  providers: [NbSidebarService]
+    SearchComponent, ProductListComponent],
+  exports: [PageComponent, SearchComponent, ProductListComponent],
+  providers: []
 })
 export class SharedModule { }

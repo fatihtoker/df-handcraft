@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../../admin/auth-service/auth.service';
 import {UserModel} from '../user.model';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
+import { AuthService } from '../auth-service/auth.service';
 
 @Component({
   selector: 'app-admin-login',

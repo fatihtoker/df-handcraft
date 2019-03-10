@@ -62,21 +62,23 @@ ul {
   padding: 0;
   overflow: hidden;
 }
-li {
-  float: left;
-
-  a {
-    color: white;
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-    font-size: 3.5rem;
-    cursor: pointer;
-    &:hover {
-      color: $df-gold;
-    }
-    .phone-number {
-      font-size: 2rem;
+.icon-list {
+  li {
+    float: left;
+  
+    a {
+      color: white;
+      text-align: center;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 3.5rem;
+      cursor: pointer;
+      &:hover {
+        color: $df-gold;
+      }
+      .phone-number {
+        font-size: 2rem;
+      }
     }
   }
 }

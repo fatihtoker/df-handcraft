@@ -28,6 +28,10 @@ export class AuthService {
       return this.http.post(loginUrl, JSON.stringify(credentials), {headers: this.headers});
     }
   }
+  unAuthenticate() {
+    localStorage.clear();
+    window.location.href = "/";
+  }
   isAuthenticated() {
     const token = localStorage.getItem('token');
     const checkPath = 'admin/';
