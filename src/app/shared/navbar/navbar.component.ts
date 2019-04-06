@@ -7,17 +7,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ApiService} from '../api/api.service';
 import {startWith, map, debounceTime, distinctUntilChanged} from 'rxjs/internal/operators';
 import {Router} from '@angular/router';
-
-export interface ProductGroup {
-  category: string;
-  products: string[];
-}
-
-export const _filter = (opt: string[], value: string): string[] => {
-  const filterValue = value.toLowerCase();
-
-  return opt.filter(item => item['name'].toLowerCase().indexOf(filterValue) === 0);
-};
+import { ProductModel } from '../product-list/product.model';
 
 @Component({
   selector: 'app-navbar',
@@ -42,42 +32,53 @@ export class NavbarComponent implements OnInit {
   toolbarState = 'show';
   previousPosition = 0;
   searchBarVisible = true;
-  productGroups: ProductGroup[] = [];
-  productForm: FormGroup = this.fb.group({
-    productGroup: '',
-  });
-  productGroupOptions: Observable<ProductGroup[]>;
+  query: string;
+  searchActive = false;
+  loading = false;
+  params = {};
+  searchProducts: ProductModel[] = [];
+  querySubscription: any;
+  private queryChanged: Subject<string> = new Subject<string>();
   @ViewChild(MatAutocompleteTrigger) autoGroup: MatAutocompleteTrigger;
   constructor(private matIconRegistry: MatIconRegistry, private fb: FormBuilder,
               private apiService: ApiService, private dataService: DataService,
               private router: Router) {
     matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
-    this.apiService.get('products-category').subscribe(response => {
-      this.init(response.data);
+    this.querySubscription = this.queryChanged.pipe(debounceTime(500), distinctUntilChanged())
+      .subscribe((query: any) => {
+
+        let refresh = false;
+
+        if (query) {
+          if (query.length >= 2) {
+          this.params = Object.assign(this.params, { query: query });
+          refresh = true;
+        }
+        } else{
+          this.router.navigate(['/']);
+        }
+        
+        if (refresh) {
+          this.params = Object.assign({}, this.params);
+          this.searchProducts = [];
+          this.apiService.get('products', undefined, this.params ).subscribe(response => {
+            for (const model of response.data) {
+              this.searchProducts.push(new ProductModel(model));
+            }
+            this.dataService.updateData(this.searchProducts);
+            this.router.navigate(['/arama']);
+            
+          }, err => {
+          });
+        }
       });
     }
   ngOnInit() {
-    this.onChange();
+   this.queryChanged.next(this.query);
   }
-  onSubmit() {
-    this.dataService.updateData(this.productForm.getRawValue().productGroup);
-  }
-  onChange() {
-    this.productForm.get('productGroup').valueChanges.subscribe(value => {
-      this.dataService.updateData(value);
-    });
-    this.router.navigate(['/']);
-  }
-  optionSelected(event: MatAutocompleteSelectedEvent) {
-    this.dataService.updateData(event.option.value);
-  }
-  init (data) {
-    this.productGroups = data;
-    this.productGroupOptions = this.productForm.get('productGroup')!.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterGroup(value))
-      );
+  onChange(query: any) {
+    this.query = query;
+    this.queryChanged.next(this.query);
   }
   onPageScroll(scrollPosition) {
 
@@ -85,18 +86,8 @@ export class NavbarComponent implements OnInit {
       this.toolbarState = 'show';
     } else {
       this.toolbarState = 'hide';
-      this.autoGroup.closePanel();
     }
     this.previousPosition = scrollPosition;
-  }
-  private _filterGroup(value: string): ProductGroup[] {
-    if (value) {
-      return this.productGroups
-        .map(group => ({category: group.category, products: _filter(group.products, value)}))
-        .filter(group => group.products.length > 0);
-    }
-
-    return this.productGroups;
   }
   closePanel() {
     this.searchBarVisible = false;

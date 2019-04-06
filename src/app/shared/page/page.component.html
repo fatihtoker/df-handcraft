@@ -1,7 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container main-container">
-  <router-outlet *ngIf="!searchActive"></router-outlet>
-  <app-search *ngIf="searchActive" [products]="searchProducts" [loading]="loading"></app-search>
+  <router-outlet></router-outlet>
   <button [style.display]="displayState" (click)="onGoTopClick()" appScrollListener (pageScroll)="onScroll($event)" mat-fab class="goTopButton mat-elevation-z10">
     <mat-icon fontSet="fa" fontIcon="fa-arrow-up"></mat-icon>
   </button>
