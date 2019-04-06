@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200|Roboto:100|Ubuntu:300');
 
+body {
+  background: whitesmoke;
+}
 .container {
   text-align: center;
 }
@@ -12,6 +15,9 @@
 }
 header a {
   color: white;
+}
+.search-row {
+  border-bottom: .5px solid gray;
 }
 app-navbar {
   position: fixed;
@@ -116,9 +122,6 @@ ul {
   -webkit-border-radius: 10px !important;
   -moz-border-radius: 10px !important;
   border-radius: 10px !important;
-  &:hover {
-    border: 1.5px solid $df-gold;
-  }
   cursor: pointer;
   overflow: hidden;
 }

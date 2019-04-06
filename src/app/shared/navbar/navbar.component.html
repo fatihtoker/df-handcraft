@@ -26,7 +26,7 @@
           </ul>
         </span>
       </mat-toolbar-row>
-      <mat-toolbar-row [@scrollAnimation]="toolbarState" class="mat-elevation-z2" appScrollListener (pageScroll)="onPageScroll($event)" *ngIf="searchBarVisible">
+      <mat-toolbar-row [@scrollAnimation]="toolbarState" class="search-row" appScrollListener (pageScroll)="onPageScroll($event)" *ngIf="searchBarVisible">
         <span class="search-input">
           <mat-form-field appearance="outline">
             <mat-label>Arama</mat-label>
