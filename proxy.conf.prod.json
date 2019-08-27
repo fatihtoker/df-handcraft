@@ -1,0 +1,12 @@
+{
+  "/admin/": {
+    "target": "https://df-handcraft-api.herokuapp.com",
+    "secure": true,
+    "changeOrigin": true
+  },
+  "/api": {
+    "target": "https://df-handcraft-api.herokuapp.com",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

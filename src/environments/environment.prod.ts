@@ -1,3 +1,7 @@
 export const environment = {
-  production: true
+  production: true,
+  dfApi: {
+    baseURL: 'api',
+    version: 'v1'
+  }
 };
