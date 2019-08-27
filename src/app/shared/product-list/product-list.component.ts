@@ -10,7 +10,6 @@ export class ProductListComponent implements OnInit {
 
   constructor() { }
   @Input() products: ProductModel[];
-  @Input() loading = false;
   isHovered = [false];
 
   ngOnInit() {

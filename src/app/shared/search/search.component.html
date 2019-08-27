@@ -1,4 +1,11 @@
 <div class="row">
+  <div class="col-12" *ngIf="loading">
+      <mat-progress-spinner
+      class="spinner"
+      color="primary"
+      mode="indeterminate">
+      </mat-progress-spinner>
+  </div>
   <div class="col-6" *ngIf="!loading">
     <mat-accordion>
       <mat-expansion-panel>
@@ -20,6 +27,6 @@
     </mat-accordion>
   </div>
   <div class="col-6">
-    <app-product-list [loading]="loading" [products]="searchProducts"></app-product-list>  
+    <app-product-list [products]="searchProducts"></app-product-list>  
   </div>
 </div>

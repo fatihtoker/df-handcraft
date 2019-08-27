@@ -6,7 +6,7 @@
   </mat-progress-spinner>
   <mat-tab-group *ngIf="!loading">
     <mat-tab label="Tüm Ürünler">
-      <app-product-list [loading]="loading" [products]="products"></app-product-list>
+      <app-product-list [products]="products"></app-product-list>
     </mat-tab>
     <mat-tab label="Çok Satanlar">
       <div class="mat-elevation-z4">

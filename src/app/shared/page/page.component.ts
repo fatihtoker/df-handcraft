@@ -15,7 +15,7 @@ export class PageComponent {
     matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
   }
   onScroll(scrollPosition) {
-    this.displayState = scrollPosition > 100 ? 'block' : 'none';
+    this.displayState = scrollPosition > 350 ? 'block' : 'none';
   }
   onGoTopClick() {
     window.scroll(0, 0);
