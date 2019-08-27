@@ -7,6 +7,10 @@ export const environment = {
   dfApi: {
     baseURL: 'api',
     version: 'v1'
+  },
+  dfAdmin: {
+    baseURL: 'admin',
+    loginUrl: 'login_check'
   }
 };
 

@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../../shared/api/api.service';
-import {Observable, ReplaySubject, Subject, Subscription} from 'rxjs';
+import {ReplaySubject, Subject} from 'rxjs';
 import {DataService} from '../../shared/data-service/data.service';
-import {map} from 'rxjs/internal/operators';
+import {environment} from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private dfAdmin: any;
   headers: HttpHeaders;
   private errorSource: Subject<any>;
   constructor(private api: ApiService, private http: HttpClient, private dataService: DataService) {
+    this.dfAdmin = environment.dfAdmin;
     this.headers = new HttpHeaders({
       'X-Requested-With': 'XMLHttpRequest',
       'Content-Type': 'application/json',
@@ -25,12 +28,12 @@ export class AuthService {
   authenticate(credentials: any = {}) {
     const loginUrl = 'admin/login_check';
     if (credentials) {
-      return this.http.post(loginUrl, JSON.stringify(credentials), {headers: this.headers});
+      return this.http.post(`${this.dfAdmin.baseURL}/${this.dfAdmin.loginUrl}`, JSON.stringify(credentials), {headers: this.headers});
     }
   }
   unAuthenticate() {
     localStorage.clear();
-    window.location.href = "/";
+    window.location.href = '/';
   }
   isAuthenticated() {
     const token = localStorage.getItem('token');
@@ -39,7 +42,7 @@ export class AuthService {
       'Authorization', 'Bearer ' + token,
     );
     if (token) {
-      return this.http.get(checkPath, {headers: checkHeaders}).toPromise()
+      return this.http.get(`${this.dfAdmin.baseURL}/`, {headers: checkHeaders}).toPromise()
         .catch(err => {
           this.errorSource.next(err);
         });
