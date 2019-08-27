@@ -1,27 +1,39 @@
-@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200|Roboto:100|Ubuntu:300');
 
+body {
+  background: whitesmoke;
+}
 .container {
   text-align: center;
+}
+.main-container {
   margin-top: 15rem;
-
+}
+.container-fluid {
+  padding-left: unset;
+  padding-right: unset;
 }
 header a {
   color: white;
+}
+.search-row {
+  border-bottom: .5px solid gray;
 }
 app-navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 4;
 }
 .navbar-toggler-icon {
   color: white;
 }
 .col-product {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   * {
-    font-family: 'Poiret One', cursive !important;
+    font-family: 'Roboto', sans-serif !important;
     font-size: 20px !important;
     line-height: 2.5rem !important;
   }
@@ -38,12 +50,17 @@ app-navbar {
 .logo-img-container {
   width: 100px;
   cursor: pointer;
+  position: absolute;
+  left: 4px;
+  top: 3px;
 }
 .logo-img {
   max-width: 100%;
   height: auto;
   max-height: 100%;
-  width: 50px;
+  width: 49px;
+  background-color: transparent !important;
+  float: left;
 }
 ul {
   list-style-type: none;
@@ -51,20 +68,23 @@ ul {
   padding: 0;
   overflow: hidden;
 }
-li {
-  float: left;
-
-  a {
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-    font-size: 3.5rem;
-    cursor: pointer;
-    &:hover {
-      color: $df-gold;
-    }
-    .phone-number {
-      font-size: 2rem;
+.icon-list {
+  li {
+    float: left;
+  
+    a {
+      color: white;
+      text-align: center;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 3.5rem;
+      cursor: pointer;
+      &:hover {
+        color: $df-gold;
+      }
+      .phone-number {
+        font-size: 2rem;
+      }
     }
   }
 }
@@ -92,4 +112,90 @@ li {
   background-color: $df-gold !important;
   font-size: 2rem !important;
   z-index: 2;
+}
+.card-product{
+  max-height: 400px;
+  height: 400px;
+  max-width: 400px;
+  margin: 1rem auto;
+  border: .5px solid gray;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  border-radius: 10px !important;
+  cursor: pointer;
+  overflow: hidden;
+}
+.spinner {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.desc-field {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30rem;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.80);
+  font-size: 20px;
+  z-index: 999;
+  .desc-text {
+    position: absolute;
+    top: 10px;
+  }
+}
+.desc-field mat-chip {
+  color: white !important;
+  font-weight: bold;
+}
+.mat-chip-list-wrapper {
+  position: absolute;
+  top: 6px;
+  left: 25%;
+}
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+.login-container > * {
+  width: 100%;
+}
+.login-fields {
+  display: flex !important;
+  flex-direction: column;
+  font-size: 18px !important;
+}
+.login-card {
+  height: 50vh;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-header {
+  display: block !important;
+  .login-title {
+    font-size: 30px !important;
+  }
+}
+.login-button {
+  width: 100%;
+  color: white !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+.mat-tab-label-content {
+  opacity: 1;
+  font-weight: bold;
+}
+nb-layout-header {
+  nav {
+    height: 6rem !important;
+  }
+}
+nb-layout-column {
+  font-size: 2rem;
 }

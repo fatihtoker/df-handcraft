@@ -1,30 +1,21 @@
 <div class="row">
-  <mat-tab-group>
+  <mat-progress-spinner *ngIf="loading"
+    class="spinner"
+    color="primary"
+    mode="indeterminate">
+  </mat-progress-spinner>
+  <mat-tab-group *ngIf="!loading">
+    <mat-tab label="Tüm Ürünler">
+      <app-product-list [products]="products"></app-product-list>
+    </mat-tab>
     <mat-tab label="Çok Satanlar">
       <div class="mat-elevation-z4">
-        <div class="col-12 col-md-6 col-lg-4 col-product" *ngFor="let product of data">
-          <mat-card>
-            <mat-card-header class="product-header">
-              <mat-card-title>
-                {{product.name}}
-              </mat-card-title>
-              <mat-card-subtitle>
-                {{product.category}}
-              </mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="../../../assets/images/df-sample.jpg" alt="Sample Image">
-            <mat-card-content>
-              <p>
-                {{product.description}}
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
+        Çok Satanlar
       </div>
     </mat-tab>
     <mat-tab label="Son Eklenenler">
       <div class="mat-elevation-z4">
-        Large content
+        Son Eklenenler
       </div>
     </mat-tab>
   </mat-tab-group>

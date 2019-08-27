@@ -1,38 +1,42 @@
 <header>
-  <mat-toolbar>
-    <mat-toolbar-row class="toolbar-first-row mat-elevation-z10">
-      <span class="logo-img-container" routerLink="/"><img class="logo-img" src="../../../assets/images/df-letters-only.png"></span>
-      <span class="space"></span>
-      <span style="color: white">
-        <ul class="icon-list">
-          <li>
-            <a href="https://www.instagram.com/df_handcraft/" target="_blank">
-              <i class="fa fa-instagram"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/FortuneDilhayat-210972519817324/" target="_blank">
-              <i class="fa fa-facebook-square"></i>
-            </a>
-          </li>
-          <li>
-            <a>
-              <i class="fa fa-whatsapp"></i>
-            </a>
-          </li>
-        </ul>
-      </span>
-    </mat-toolbar-row>
-    <mat-toolbar-row [@scrollAnimation]="toolbarState" class="mat-elevation-z2" appScrollListener (pageScroll)="onPageScroll($event)">
-      <span class="search-input">
-        <mat-form-field appearance="outline">
-          <mat-label>Arama</mat-label>
-          <input type="text" matInput placeholder="Ürün, kategori..." [ngModel]="query" (ngModelChange)="onChange($event)">
-          <mat-icon matSuffix fontSet="fa" fontIcon="fa-search"></mat-icon>
-        </mat-form-field>
-      </span>
-    </mat-toolbar-row>
-  </mat-toolbar>
+  <div class="container-fluid">
+    <mat-toolbar>
+      <mat-toolbar-row class="toolbar-first-row mat-elevation-z2">
+        <a href="/"><button mat-fab class=" mat-elevation-z10 logo-img">
+          <span class="logo-img-container"><img class="logo-img" src="assets/images/df-letters-only.png"></span>
+        </button></a>
+        <span class="space"></span>
+        <span style="color: white">
+          <ul class="icon-list">
+            <li>
+              <a href="https://www.instagram.com/df_handcraft/" target="_blank">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/FortuneDilhayat-210972519817324/" target="_blank">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="fa fa-whatsapp"></i>
+              </a>
+            </li>
+          </ul>
+        </span>
+      </mat-toolbar-row>
+      <mat-toolbar-row [@scrollAnimation]="toolbarState" class="search-row" appScrollListener (pageScroll)="onPageScroll($event)" *ngIf="searchBarVisible">
+        <span class="search-input">
+          <mat-form-field appearance="outline">
+            <mat-label>Arama</mat-label>
+            <input type="text" matInput placeholder="Ürün, kategori..." (ngModelChange)="onChange($event)" [(ngModel)]="query">
+            <mat-icon matSuffix fontSet="fa" fontIcon="fa-search"></mat-icon>
+          </mat-form-field>
+        </span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
 </header>
 
 

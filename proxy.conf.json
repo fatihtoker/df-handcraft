@@ -1,0 +1,12 @@
+{
+  "/admin/": {
+    "target": "http://df-api.localhost:8000",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/api": {
+    "target": "http://df-api.localhost:8000",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

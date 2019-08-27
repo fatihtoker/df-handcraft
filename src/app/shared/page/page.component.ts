@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {MatIconRegistry} from '@angular/material';
 
 @Component({
@@ -8,12 +8,14 @@ import {MatIconRegistry} from '@angular/material';
 })
 export class PageComponent {
   displayState = 'none';
-
+  dataSubscription: any;
+  apiSubscription: any;
+  
   constructor(private matIconRegistry: MatIconRegistry) {
     matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
   }
   onScroll(scrollPosition) {
-    this.displayState = scrollPosition > 100 ? 'block' : 'none';
+    this.displayState = scrollPosition > 350 ? 'block' : 'none';
   }
   onGoTopClick() {
     window.scroll(0, 0);
