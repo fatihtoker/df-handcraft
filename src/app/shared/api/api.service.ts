@@ -60,15 +60,16 @@ export class ApiService {
     return body;
   }
   // TODO: Observable<ApiModel>
-  get(path: string, baseUrl: string = this.dfApi.baseURL, params: any = {}): Observable<any> {
+  get(path: string, baseUrl: string = this.dfApi.baseURL, params: any = {}, versioning = true, headers = this.headers): Observable<any> {
     let urlParams: HttpParams = new HttpParams();
     for (const param in params) {
       if (params.hasOwnProperty(param)) {
         urlParams = urlParams.append(param, params[param]);
       }
     }
+    const version = versioning ? this.dfApi.version + '/' : '';
    // console.log(`${baseUrl}/${this.dfApi.version}/${path}`);
-    return this.http.get(`${baseUrl}/${this.dfApi.version}/${path}`, { headers: this.headers, params: urlParams })
+    return this.http.get(`${baseUrl}/${version}${path}`, { headers: headers, params: urlParams })
       .pipe(
         timeout(30000),
         catchError(err => this.handleError(err))

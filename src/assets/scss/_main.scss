@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200|Roboto:100|Ubuntu:300');
 
-body {
+html body {
   background: whitesmoke;
 }
 .container {
@@ -71,7 +71,7 @@ ul {
 .icon-list {
   li {
     float: left;
-  
+
     a {
       color: white;
       text-align: center;
@@ -118,7 +118,6 @@ ul {
   height: 400px;
   max-width: 400px;
   margin: 1rem auto;
-  border: .5px solid gray;
   -webkit-border-radius: 10px !important;
   -moz-border-radius: 10px !important;
   border-radius: 10px !important;
@@ -190,12 +189,4 @@ ul {
 .mat-tab-label-content {
   opacity: 1;
   font-weight: bold;
-}
-nb-layout-header {
-  nav {
-    height: 6rem !important;
-  }
-}
-nb-layout-column {
-  font-size: 2rem;
 }

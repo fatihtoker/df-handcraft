@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-sm-3 col-product" *ngFor="let model of products" >
-      <mat-card class="card-product" (mouseenter)="mouseEntered(model.id)" (mouseleave)="mouseLeft(model.id)" [routerLink]="'/urunler/' + model.id + '/detay'">
+    <div class="col-sm-4 col-lg-3 col-product" *ngFor="let model of products" >
+      <mat-card class="card-product" [ngClass]="{'mat-elevation-z10': isHovered[model.id]}" (mouseenter)="mouseEntered(model.id)" (mouseleave)="mouseLeft(model.id)" [routerLink]="'/urunler/' + model.id + '/detay'">
         <mat-card-header class="product-header">
           <mat-card-title>
             {{model.name}}

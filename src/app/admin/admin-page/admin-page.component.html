@@ -1,23 +1,2 @@
-<nb-layout>
-  <nb-layout-header fixed>
-      <a href="/admin-panel"><button mat-fab class=" mat-elevation-z10 logo-img">
-          <span class="logo-img-container"><img class="logo-img" src="assets/images/df-letters-only.png"></span>
-        </button></a>
-        <a href="/admin-panel">
-          <img src="assets/images/admin.svg">
-        </a>
-        <div class="space"></div>
-        <nb-user size="xlarge"
-             name="Yetkili Kullanıcı">
-        </nb-user>
-    </nb-layout-header>
+<app-admin-header></app-admin-header>
 
-  <nb-sidebar containerFixed>
-      <nb-menu [items]="items">
-      </nb-menu>
-  </nb-sidebar>
-
-  <nb-layout-column>
-    <router-outlet></router-outlet>
-  </nb-layout-column>
-</nb-layout>
