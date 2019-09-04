@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   loading = false;
   searchProducts: ProductModel[] = [];
 
-  constructor(private dataService: DataService, private apiService: ApiService) { 
+  constructor(private dataService: DataService, private apiService: ApiService) {
   }
 
   ngOnInit() {

@@ -1,22 +1,12 @@
 <div class="row">
-  <mat-progress-spinner *ngIf="loading"
+  <!-- <mat-progress-spinner *ngIf="loading"
     class="spinner"
     color="primary"
     mode="indeterminate">
-  </mat-progress-spinner>
-  <mat-tab-group *ngIf="!loading">
-    <mat-tab label="Tüm Ürünler">
+  </mat-progress-spinner> -->
+  <mat-tab-group (selectedIndexChange)="onTabChanged($event)" [selectedIndex]="selectedIndex">
+    <mat-tab *ngFor="let tab of tabs" [label]="tab.displayName">
       <app-product-list [products]="products"></app-product-list>
-    </mat-tab>
-    <mat-tab label="Çok Satanlar">
-      <div class="mat-elevation-z4">
-        Çok Satanlar
-      </div>
-    </mat-tab>
-    <mat-tab label="Son Eklenenler">
-      <div class="mat-elevation-z4">
-        Son Eklenenler
-      </div>
     </mat-tab>
   </mat-tab-group>
 </div>
