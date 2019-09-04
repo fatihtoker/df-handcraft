@@ -1,1 +1,46 @@
+.navbar-toggler-icon {
+  color: white;
+}
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.icon-list {
+  li {
+    float: left;
+
+    a {
+      color: white;
+      text-align: center;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 3.5rem;
+      cursor: pointer;
+      &:hover {
+        color: #FFC107;
+      }
+      .phone-number {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+.search-input {
+  width: 100%;
+  min-width: 150px;
+  //max-width: 600px;
+  max-height: 100%;
+  mat-form-field {
+    width: 100%;
+    font-size: 14px;
+  }
+  mat-icon {
+    font-size: 3rem !important;
+  }
+}
+.search-icon {
+  font-size: 3.5rem;
+}

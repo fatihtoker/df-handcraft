@@ -1,6 +1,6 @@
-<div class="row p-5">
-    <div class="col-sm-4 col-lg-3 col-product" *ngFor="let model of products" >
-      <mat-card class="card-product" [ngClass]="{'mat-elevation-z10': isHovered[model.id]}" (mouseenter)="mouseEntered(model.id)" (mouseleave)="mouseLeft(model.id)" [routerLink]="'/urunler/' + model.id + '/detay'">
+<div class="row p-5 df-display-flex df-flex-wrap-wrap df-flex-justify-center ">
+    <div class="col-sm-6 col-lg-3 col-md-4 col-product" *ngFor="let model of products" >
+      <mat-card class="card-product df-height-full" [ngClass]="{'mat-elevation-z10': isHovered[model.id]}" (mouseenter)="mouseEntered(model.id)" (mouseleave)="mouseLeft(model.id)" [routerLink]="'/urunler/' + model.id + '/detay'">
         <mat-card-header class="product-header">
           <mat-card-title>
             {{model.name}}
@@ -10,14 +10,16 @@
           </mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="../../../assets/images/df-sample.jpg" alt="Sample Image">
-        <ng-container *ngIf="isHovered[model.id]" class="product-content">
-              <span class="desc-text">
-                <mat-chip-list class="desc-field">
-                <mat-chip [selected]="true" color="primary">Ürün Kodu: {{model.id}}</mat-chip>
-                <mat-chip [selected]="true" color="accent">{{model.price + ' &#8378;'}}</mat-chip>
-              </mat-chip-list>
-              </span>
-        </ng-container>
+        <!-- <mat-card-content class="df-overflow-hidden">
+          <p>
+            {{model.description}}
+          </p>
+        </mat-card-content> -->
+        <mat-card-footer class="df-width-full df-pos-absolute text-left">
+            <div class="desc-text df-bg-color-blue df-color-white text-center">
+                {{model.price + ' &#8378;'}}
+            </div>
+        </mat-card-footer>
       </mat-card>
   </div>
 </div>

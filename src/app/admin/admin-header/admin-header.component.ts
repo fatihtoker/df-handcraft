@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { fadeIn, fadeOut } from 'ng-animate';
 import { AuthService } from '../auth-service/auth.service';
@@ -20,10 +20,14 @@ import { AuthService } from '../auth-service/auth.service';
 })
 export class AdminHeaderComponent implements OnInit {
 
+  @Output() logoClicked = new EventEmitter();
+
   currentUser: any;
 
   actions = [];
   panelVisible = false;
+  panelHovered = false;
+  visibleTimeout: any;
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -45,6 +49,18 @@ export class AdminHeaderComponent implements OnInit {
       }
     )
   }
+  onLogoClicked() {
+    this.logoClicked.emit();
+  }
+  onUserContainerMouseEntered() {
+    clearTimeout(this.visibleTimeout);
+    this.panelVisible = true;
+  }
+  onUserContainerMouseLeft() {
+    this.visibleTimeout = setTimeout(() => {
+      this.panelVisible = false;
+    }, 1000);
+  }
 
   onDropdownClicked() {
     this.panelVisible = !this.panelVisible;
@@ -52,6 +68,7 @@ export class AdminHeaderComponent implements OnInit {
 
   onActionClicked(action: string) {
     this.panelVisible = false;
+    this.panelHovered = false;
     switch (action) {
       case 'logOut':
         this.authService.unAuthenticate();

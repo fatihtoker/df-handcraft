@@ -2,6 +2,11 @@
 
 html body {
   background: whitesmoke;
+  font-weight: 600;
+  height: calc(100vh - 64px);
+  @media (max-width: 599px) {
+    height: calc(100vh - 56px);
+  }
 }
 .container {
   text-align: center;
@@ -16,8 +21,6 @@ html body {
 header a {
   color: white;
 }
-.search-row {
-}
 app-navbar {
   position: fixed;
   top: 0;
@@ -25,27 +28,8 @@ app-navbar {
   right: 0;
   z-index: 4;
 }
-.navbar-toggler-icon {
-  color: white;
-}
-.col-product {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  * {
-    font-family: 'Roboto', sans-serif !important;
-    font-size: 20px !important;
-    line-height: 2.5rem !important;
-  }
-}
-.product-header {
-  text-align: left;
-}
-.toolbar-first-row {
-  background-color: black;
-}
-.space {
-  flex: 1 1 auto;
-}
+
+
 .logo-img-container {
   width: 100px;
   cursor: pointer;
@@ -61,48 +45,7 @@ app-navbar {
   background-color: transparent !important;
   float: left;
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.icon-list {
-  li {
-    float: left;
 
-    a {
-      color: white;
-      text-align: center;
-      padding: 10px;
-      text-decoration: none;
-      font-size: 3.5rem;
-      cursor: pointer;
-      &:hover {
-        color: $df-gold;
-      }
-      .phone-number {
-        font-size: 2rem;
-      }
-    }
-  }
-}
-.search-input {
-  width: 100%;
-  min-width: 150px;
-  //max-width: 600px;
-  max-height: 100%;
-  mat-form-field {
-    width: 100%;
-    font-size: 14px;
-  }
-  mat-icon {
-    font-size: 3rem !important;
-  }
-}
-.search-icon {
-  font-size: 3.5rem;
-}
 .goTopButton {
   cursor: pointer;
   position: fixed !important;
@@ -111,80 +54,18 @@ ul {
   background-color: $df-gold !important;
   font-size: 2rem !important;
   z-index: 2;
+  .mat-icon {
+    color: white;
+  }
 }
-.card-product{
-  max-height: 400px;
-  height: 400px;
-  max-width: 400px;
-  margin: 1rem auto;
-  -webkit-border-radius: 10px !important;
-  -moz-border-radius: 10px !important;
-  border-radius: 10px !important;
-  cursor: pointer;
-  overflow: hidden;
-}
+
 .spinner {
   position: fixed !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.desc-field {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 30rem;
-  height: 45px;
-  background: rgba(255, 255, 255, 0.80);
-  font-size: 20px;
-  z-index: 999;
-  .desc-text {
-    position: absolute;
-    top: 10px;
-  }
-}
-.desc-field mat-chip {
-  color: white !important;
-  font-weight: bold;
-}
-.mat-chip-list-wrapper {
-  position: absolute;
-  top: 6px;
-  left: 25%;
-}
-.mat-tab-body-content {
-  overflow: hidden !important;
-}
-.login-container {
-  display: flex;
-  flex-direction: column;
-}
-.login-container > * {
-  width: 100%;
-}
-.login-fields {
-  display: flex !important;
-  flex-direction: column;
-  font-size: 18px !important;
-}
-.login-card {
-  height: 50vh;
-  display: flex !important;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.login-header {
-  display: block !important;
-  .login-title {
-    font-size: 30px !important;
-  }
-}
-.login-button {
-  width: 100%;
-  color: white !important;
-  font-size: 20px !important;
-  font-weight: bold !important;
-}
+
 .mat-tab-label-content {
   opacity: 1;
   font-weight: bold;
