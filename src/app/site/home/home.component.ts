@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.tabs.push(
       {
-        name: null,
+        name: '',
         displayName: 'Tüm Ürünler'
       },
       {

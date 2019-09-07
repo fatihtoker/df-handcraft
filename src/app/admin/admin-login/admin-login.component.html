@@ -1,7 +1,9 @@
 <div class="container main-container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 login-container">
-      <mat-spinner *ngIf="showSpinner" class="spinner"></mat-spinner>
+      <div class="spinner-wrapper df-display-flex df-flex-align-center df-flex-justify-center" *ngIf="showSpinner">
+          <mat-spinner class="spinner"></mat-spinner>
+      </div>
       <mat-card *ngIf="!showSpinner" class="login-card" (keydown.enter)="onSubmit()">
         <mat-card-header class="login-header">
           <mat-card-title class="login-title">Yönetici Girişi</mat-card-title>

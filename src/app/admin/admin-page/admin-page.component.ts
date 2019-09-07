@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-page',
@@ -12,8 +13,8 @@ export class AdminPageComponent implements OnInit, OnDestroy {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher)
-  {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private title: Title) {
+    this.title.setTitle('Admin Paneli - DF Handcraft');
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);

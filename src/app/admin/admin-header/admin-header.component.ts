@@ -59,7 +59,7 @@ export class AdminHeaderComponent implements OnInit {
   onUserContainerMouseLeft() {
     this.visibleTimeout = setTimeout(() => {
       this.panelVisible = false;
-    }, 1000);
+    }, 200);
   }
 
   onDropdownClicked() {

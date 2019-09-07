@@ -90,6 +90,11 @@ $df-accent-palette: (
   -ms-flex-pack: center;
   justify-content: center;
 }
+.df-flex-align-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
 .space {
   flex: 1 1 auto;
 }
@@ -117,10 +122,19 @@ $df-accent-palette: (
 .df-overflow-auto {
   overflow: auto;
 }
+.df-overflow-x-hidden {
+  overflow-x: hidden;
+}
+.df-overflow-y-hidden {
+  overflow-y: hidden;
+}
+.df-pos-relative {
+  position: relative;
+}
 
 //typoghraphy
 .df-font-weight-600 {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 
@@ -142,6 +156,9 @@ $df-accent-palette: (
 }
 .df-color-white {
   color: #ffffff;
+}
+.df-color-black {
+  color: #000000;
 }
 .df-color-gold {
   color: #f1bd7f;
@@ -175,4 +192,10 @@ $df-accent-palette: (
 }
 .df-bg-color-black {
   background-color: #000000;
+}
+.df-bg-color-white {
+  background-color: #ffffff;
+}
+.df-bg-color-main {
+  background-color: whitesmoke;
 }

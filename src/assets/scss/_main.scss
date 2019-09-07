@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200|Roboto:100|Ubuntu:300');
 
-html body {
+html, body {
   background: whitesmoke;
   font-weight: 600;
   height: calc(100vh - 64px);
@@ -8,6 +8,12 @@ html body {
     height: calc(100vh - 56px);
   }
 }
+th, button {
+  font-weight: 600 !important;
+}
+// .mat-button-wrapper > i {
+//   margin-top: .7em;
+// }
 .container {
   text-align: center;
 }
@@ -58,15 +64,38 @@ app-navbar {
     color: white;
   }
 }
-
-.spinner {
-  position: fixed !important;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .mat-tab-label-content {
   opacity: 1;
   font-weight: bold;
+}
+.mat-tab-body-content {
+  overflow-x: hidden !important;
+}
+.spinner-wrapper {
+  min-height: 500px;
+}
+.dialog-wrapper {
+  //min-height: 400px;
+  min-width: 400px;
+  @media screen and (max-width: 426px){
+    min-width: 250px;
+  }
+  overflow-x: hidden;
+  //text-align: center;
+  position: relative;
+}
+.mat-dialog-actions {
+  text-align: right;
+  position: absolute;
+  bottom: 24px;
+  width: 100%;
+}
+.mat-dialog-content {
+  min-height: 35vh;
+  p {
+    font-weight: 500 !important;
+  }
+}
+.mat-dialog-title {
+  font-size: 30px !important;
 }

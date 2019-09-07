@@ -1,9 +1,11 @@
 <app-admin-header (logoClicked)="sideNav.toggle()"></app-admin-header>
 <mat-sidenav-container class="page-container df-height-full">
   <mat-sidenav [style.marginTop.px]="mobileQuery.matches ? 56 : 0" #sideNav [mode]="mobileQuery.matches ? 'over' : 'side'"
-  [fixedInViewport]="mobileQuery.matches" [opened]="!mobileQuery.matches" class="p-3">Sidenav content</mat-sidenav>
+  [fixedInViewport]="mobileQuery.matches" [opened]="!mobileQuery.matches">
+  <app-admin-sidenav></app-admin-sidenav>
+</mat-sidenav>
   <mat-sidenav-content>
-    <div class="row p-5 df-no-margin df-height-full df-overflow-auto">
+    <div class="row p-5 df-no-margin df-height-full df-overflow-auto df-bg-color-main">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

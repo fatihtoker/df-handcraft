@@ -10,6 +10,7 @@ import { MouseHoverListenerDirective } from './mouse-hover-listener/mouse-hover-
 import {SearchComponent} from './search/search.component';
 import {MaterialComponentsModule} from './material-components.module';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -22,8 +23,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 
   ],
   declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective,
-    SearchComponent, ProductListComponent],
-  exports: [PageComponent, SearchComponent, ProductListComponent],
-  providers: []
+    SearchComponent, ProductListComponent, ConfirmDialogComponent],
+  exports: [PageComponent, SearchComponent, ProductListComponent, ConfirmDialogComponent],
+  providers: [],
+  entryComponents: [ConfirmDialogComponent]
 })
 export class SharedModule { }

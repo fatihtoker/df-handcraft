@@ -1,0 +1,41 @@
+<div class="row dialog-wrapper">
+  <h1 mat-dialog-title class="df-font-weight-600 text-center">Kullanıcı Ekle</h1>
+  <div mat-dialog-content>
+    <div class="col-sm-6">
+      <mat-form-field class="df-width-full">
+        <input
+          type="text"
+          placeholder="Eposta"
+          matInput
+          [(ngModel)]="user.email"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+      <mat-form-field class="df-width-full">
+        <input
+          type="password"
+          placeholder="Şifre"
+          matInput
+          [(ngModel)]="user.password"
+          required
+        />
+      </mat-form-field>
+
+    </div>
+    <div class="col-xs-12 mt-5">
+      <p>Roller *</p>
+      <mat-checkbox *ngFor="let role of roles" color="primary" class="mr-2" [(ngModel)]="role.checked">{{role.displayName}}</mat-checkbox>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <div class="col-xs-12">
+      <button mat-raised-button (click)="onCancelClicked()">Vazgeç</button>
+      <button mat-raised-button color="primary" (click)="onSaveClicked()">
+        <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+        <span *ngIf="!loading">Kaydet</span>
+      </button>
+    </div>
+  </div>
+</div>

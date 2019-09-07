@@ -1,12 +1,14 @@
 <div class="row">
-  <!-- <mat-progress-spinner *ngIf="loading"
-    class="spinner"
-    color="primary"
-    mode="indeterminate">
-  </mat-progress-spinner> -->
   <mat-tab-group (selectedIndexChange)="onTabChanged($event)" [selectedIndex]="selectedIndex">
     <mat-tab *ngFor="let tab of tabs" [label]="tab.displayName">
       <app-product-list [products]="products"></app-product-list>
+      <div class="spinner-wrapper df-display-flex df-flex-align-center df-flex-justify-center" *ngIf="loading">
+          <mat-progress-spinner
+          class="spinner"
+          color="primary"
+          mode="indeterminate">
+        </mat-progress-spinner>
+        </div>
     </mat-tab>
   </mat-tab-group>
 </div>

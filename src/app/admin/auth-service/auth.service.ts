@@ -44,6 +44,9 @@ export class AuthService {
   getCurrentUser(params: any = {}): Observable<any> {
     return this.api.get(this.dfAdmin.userInfoURL, this.dfAdmin.baseURL, params, false, this.checkHeaders);
   }
+  getCheckHeaders() {
+    return this.checkHeaders;
+  }
   isAuthenticated() {
     if (this.token) {
       return this.http.get(`${this.dfAdmin.baseURL}/`, {headers: this.checkHeaders}).toPromise()

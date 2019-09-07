@@ -1,0 +1,9 @@
+<div class="df-bg-color-black df-color-white df-height-full pl-3 pb-3 df-overflow-x-hidden pt-5">
+  <div class="side-menu df-no-margin df-no-padding row df-height-full">
+    <div class="col-xs-12 menu-item-wrapper df-no-padding" [class.menu-active]="menu?.active" *ngFor="let menu of menus">
+      <button mat-button [routerLink]="menu.routerLink" routerLinkActive="router-link-active"  (click)="onMenuItemClicked(menu.id)" class="menu-item df-width-full df-font-weight-600 text-left">
+        {{menu.displayName}}
+      </button>
+    </div>
+  </div>
+</div>

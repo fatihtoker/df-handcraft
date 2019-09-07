@@ -1,0 +1,18 @@
+.menu-item {
+  font-size: 17px;
+}
+.menu-item-wrapper {
+  margin-bottom: 20px;
+  border-radius: 15px 0 0 15px;
+  color: white;
+  transition: background-color .3s ease-in,
+              color .3s ease-in;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+}
+.menu-active {
+  background-color: white;
+  color: black;
+}

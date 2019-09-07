@@ -7,6 +7,9 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { MaterialComponentsModule } from '../shared/material-components.module';
 import { FormsModule } from '@angular/forms';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
+import { UsersAddComponent } from './users/users-add/users-add.component';
 
 @NgModule({
   imports: [
@@ -15,7 +18,9 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
     FormsModule,
     MaterialComponentsModule
   ],
-  declarations: [HomeComponent, AdminLoginComponent, AdminPageComponent, AdminHeaderComponent],
-  exports: [HomeComponent]
+  declarations: [HomeComponent, AdminLoginComponent, AdminPageComponent,
+    AdminHeaderComponent, AdminSidenavComponent, UsersListComponent, UsersAddComponent],
+  exports: [HomeComponent],
+  entryComponents: [UsersAddComponent]
 })
 export class AdminModule { }

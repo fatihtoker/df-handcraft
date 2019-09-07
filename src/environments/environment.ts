@@ -11,7 +11,8 @@ export const environment = {
   dfAdmin: {
     baseURL: 'admin',
     loginURL: 'login_check',
-    userInfoURL: 'user-info'
+    userInfoURL: 'user-info',
+    menusURL: 'menus'
   }
 };
 
