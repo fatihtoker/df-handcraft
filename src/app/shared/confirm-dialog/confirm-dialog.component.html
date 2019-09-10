@@ -1,12 +1,12 @@
 <div class="row dialog-wrapper">
-    <h1 mat-dialog-title class="df-font-weight-600 text-center">{{dialogData.title}}</h1>
+    <h1 mat-dialog-title class="text-left">{{dialogData.title}}</h1>
     <div mat-dialog-content>
       <p>{{dialogData.message}}</p>
     </div>
     <div mat-dialog-actions>
       <div class="col-xs-12">
-        <button mat-raised-button (click)="onCancelClicked()">{{dialogData.cancelText}}</button>
-        <button mat-raised-button color="primary" (click)="onConfirmClicked()">
+        <button mat-button (click)="onCancelClicked()">{{dialogData.cancelText}}</button>
+        <button mat-button color="primary" (click)="onConfirmClicked()">
           {{dialogData.confirmText}}
         </button>
       </div>

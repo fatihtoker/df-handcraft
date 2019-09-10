@@ -1,0 +1,50 @@
+<div class="row dialog-wrapper">
+    <h1 mat-dialog-title class="text-left">Kullanıcı Ekle</h1>
+    <div mat-dialog-content>
+      <div class="col-sm-6">
+        <mat-form-field class="df-width-full">
+          <input
+            type="text"
+            placeholder="İsim"
+            matInput
+            [(ngModel)]="product.name"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field class="df-width-full">
+          <textarea
+            placeholder="Açıklama"
+            rows="1"
+            matInput
+            [(ngModel)]="product.description"
+            required
+          >
+          </textarea>
+        </mat-form-field>
+
+      </div>
+      <div class="col-sm-6">
+          <mat-label>Kategori *</mat-label>
+          <mat-select [(ngModel)]="product.category" name="category">
+              <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{category.displayName}}
+              </mat-option>
+          </mat-select>
+      </div>
+      <div class="col-xs-12 mt-5">
+        <p>Roller *</p>
+        <mat-checkbox *ngFor="let role of roles" color="primary" class="mr-2" [(ngModel)]="role.checked">{{role.displayName}}</mat-checkbox>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <div class="col-xs-12">
+        <button mat-button (click)="onCancelClicked()">Vazgeç</button>
+        <button mat-button color="primary" (click)="onSaveClicked()">
+          <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+          <span *ngIf="!loading">Kaydet</span>
+        </button>
+      </div>
+    </div>
+  </div>

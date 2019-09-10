@@ -18,10 +18,10 @@ export class ConfirmDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-    this.dialogData.title = this.data.title ? this.data.title : this.dialogData.title;
-    this.dialogData.message = this.data.message ? this.data.message : this.dialogData.message;
-    this.dialogData.cancelText = this.data.cancelText ? this.data.cancelText : this.dialogData.cancelText;
-    this.dialogData.confirmText = this.data.confirmText ? this.data.confirmText : this.dialogData.confirmText;
+    this.dialogData.title = this.data ? this.data.title : this.dialogData.title;
+    this.dialogData.message = this.data ? this.data.message : this.dialogData.message;
+    this.dialogData.cancelText = this.data ? this.data.cancelText : this.dialogData.cancelText;
+    this.dialogData.confirmText = this.data ? this.data.confirmText : this.dialogData.confirmText;
   }
   onCancelClicked() {
     this.dialogRef.close('cancel');

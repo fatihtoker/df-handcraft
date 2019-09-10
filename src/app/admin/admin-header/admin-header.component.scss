@@ -33,12 +33,6 @@ header {
     }
   }
   .username {
-    font-weight: 600;
-    /*
-  ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
-*/
-
     @media (max-width: 481px){
       display: none;
     }
@@ -62,7 +56,6 @@ header {
       &:hover {
         background-color: black;
         color: white;
-        font-weight: 600;
       }
     }
   }

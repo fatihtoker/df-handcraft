@@ -30,26 +30,17 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.loadData();
   }
   loadData() {
-    const tempDataSource = [];
     this.apiSubscription = this.apiService.getWithCredentials('users').subscribe(
       (response) => {
-        for (const item of response.data) {
-          tempDataSource.push(
-            {
-              id: item.id,
-              email: item.email,
-              roles: this.getRolesAsString(item.roles)
-            }
-          );
-        }
-        this.dataSource = tempDataSource;
+        this.dataSource = response.data;
       }, (err) => {
         // handle error
       }
     );
   }
-  openDialog(): void {
+  openDialog(data = null): void {
     const dialogRef = this.dialog.open(UsersAddComponent, {
+      data: data
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -83,9 +74,12 @@ export class UsersListComponent implements OnInit, OnDestroy {
       }
     });
   }
+  onEditItemClicked(element) {
+    this.openDialog(element);
+  }
   showMessage(message) {
     this._snackBar.open(message, '', {
-      duration: 1500
+      duration: 2000
     });
   }
 

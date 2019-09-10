@@ -52,6 +52,10 @@ export class ApiService {
 
     const error: any = { code: code, message: message, errors: errors };
 
+    if (message === 'Expired JWT Token') {
+      location.reload();
+    }
+
     this.errorSource.next(error);
     if (!message) {
       message = 'Bir hata meydana geldi.';

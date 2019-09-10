@@ -42,11 +42,11 @@ export class MenuService {
             displayName: menu.display_name,
             order: menu.order_index,
             active: false,
-            routerLink: menu.router_link
+            routerLink: menu.router_link,
+            iconClass: menu.icon_class
           });
         }
         this.menus.sort((a, b) => a.order - b.order);
-        this.menus[0].active = true;
         this.dataService.updateMenu(this.menus);
       }, (err) => {
         this.menus = [];

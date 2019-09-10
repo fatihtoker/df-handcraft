@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnInit, Inject, OnDestroy, Input } from '@angular/core';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ApiService } from 'src/app/shared/api/api.service';
-import { rotateInUpLeft } from 'ng-animate';
-import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-users-add',
@@ -13,19 +12,29 @@ import { Subscription } from 'rxjs';
 export class UsersAddComponent implements OnInit, OnDestroy {
 
   user = {
+    id: null,
     email: '',
     password: '',
     roles: []
   };
 
   roles = [];
+  userRoles = [];
   loading = false;
   apiSubscription: Subscription;
 
   constructor(public dialogRef: MatDialogRef<UsersAddComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getRoles();
+    if (this.data) {
+      this.user.id = this.data.id;
+      this.user.email = this.data.email;
+      this.userRoles = this.data.roles;
+    }
+  }
+  getRoles() {
     this.roles = [];
     this.apiSubscription = this.api.getWithCredentials('roles').subscribe(
       (response) => {
@@ -35,7 +44,7 @@ export class UsersAddComponent implements OnInit, OnDestroy {
               id: role.id,
               name: role.name,
               displayName: role.display_name,
-              checked: false
+              checked: this.hasRole(role.id)
             }
           );
         }
@@ -43,6 +52,16 @@ export class UsersAddComponent implements OnInit, OnDestroy {
         // handle error
       }
     );
+  }
+  hasRole(roleId) {
+    if (!this.userRoles) { return false; }
+    for (const role of this.userRoles) {
+      if (role.id === roleId) {
+        return true;
+      }
+    }
+    return false;
+
   }
   ngOnDestroy() {
     if (this.apiSubscription) {
@@ -60,6 +79,9 @@ export class UsersAddComponent implements OnInit, OnDestroy {
     this.api.postWithCredentials('users/create', this.user).subscribe(
       (response) => {
         this.loading = false;
+        this._snackBar.open(response.message, '', {
+          duration: 1500
+        });
         this.dialogRef.close();
       }, (err) => {
         this.loading = false;

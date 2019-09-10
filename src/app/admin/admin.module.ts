@@ -10,6 +10,8 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { UsersAddComponent } from './users/users-add/users-add.component';
+import { ProductsListComponent } from './products/products-list/products-list.component';
+import { ProductsAddComponent } from './products/products-add/products-add.component';
 
 @NgModule({
   imports: [
@@ -19,8 +21,8 @@ import { UsersAddComponent } from './users/users-add/users-add.component';
     MaterialComponentsModule
   ],
   declarations: [HomeComponent, AdminLoginComponent, AdminPageComponent,
-    AdminHeaderComponent, AdminSidenavComponent, UsersListComponent, UsersAddComponent],
+    AdminHeaderComponent, AdminSidenavComponent, UsersListComponent, UsersAddComponent, ProductsListComponent, ProductsAddComponent],
   exports: [HomeComponent],
-  entryComponents: [UsersAddComponent]
+  entryComponents: [UsersAddComponent, ProductsAddComponent]
 })
 export class AdminModule { }

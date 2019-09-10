@@ -78,6 +78,18 @@ $df-accent-palette: (
   display: -ms-flexbox;
   display: flex;
 }
+.df-flex-direction-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.df-flex-direction-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
 .df-height-full {
   height: 100%;
 }

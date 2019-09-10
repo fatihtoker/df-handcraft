@@ -1,19 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:200|Roboto:100|Ubuntu:300');
+@import url('https://fonts.googleapis.com/css?family=Roboto:500,400,300');
 
 html, body {
   background: whitesmoke;
-  font-weight: 600;
   height: calc(100vh - 64px);
   @media (max-width: 599px) {
     height: calc(100vh - 56px);
   }
+  * {
+    font-weight: 400;
+  }
 }
-th, button {
-  font-weight: 600 !important;
-}
-// .mat-button-wrapper > i {
-//   margin-top: .7em;
-// }
 .container {
   text-align: center;
 }
@@ -64,10 +60,6 @@ app-navbar {
     color: white;
   }
 }
-.mat-tab-label-content {
-  opacity: 1;
-  font-weight: bold;
-}
 .mat-tab-body-content {
   overflow-x: hidden !important;
 }
@@ -75,7 +67,17 @@ app-navbar {
   min-height: 500px;
 }
 .dialog-wrapper {
-  //min-height: 400px;
+  display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-height: 40vh;
   min-width: 400px;
   @media screen and (max-width: 426px){
     min-width: 250px;
@@ -86,16 +88,12 @@ app-navbar {
 }
 .mat-dialog-actions {
   text-align: right;
-  position: absolute;
-  bottom: 24px;
   width: 100%;
+  margin-bottom: unset !important;
 }
 .mat-dialog-content {
-  min-height: 35vh;
-  p {
-    font-weight: 500 !important;
-  }
+  overflow: unset !important;
 }
 .mat-dialog-title {
-  font-size: 30px !important;
+  font-size: 26px !important;
 }

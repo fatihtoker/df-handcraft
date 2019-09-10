@@ -4,7 +4,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatOptionModule,
-  MatToolbarModule, MatExpansionModule, MatSnackBarModule, MatSidenavModule, MatTableModule, MatDialogModule, MatCheckboxModule
+  MatToolbarModule, MatExpansionModule, MatSnackBarModule, MatSidenavModule, MatTableModule, MatDialogModule, MatCheckboxModule, MatPaginatorModule, MatRadioModule, MatSelectModule
 } from '@angular/material';
 
 @NgModule({
@@ -24,7 +24,10 @@ import {
     MatSidenavModule,
     MatTableModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   exports: [MatCardModule,
     MatButtonModule,
@@ -41,7 +44,10 @@ import {
     MatSidenavModule,
     MatTableModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    MatSelectModule
   ],
 })
 export class MaterialComponentsModule { }

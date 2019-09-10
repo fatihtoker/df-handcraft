@@ -13,11 +13,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   menuSubscription: Subscription;
 
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(private dataService: DataService, private router: Router, private menuService: MenuService) {
 
    }
 
   ngOnInit() {
+    this.menuService.getMenus();
     this.menuSubscription = this.dataService.getMenuObservable().subscribe(
       (response) => {
         if (response) {
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     );
   }
   ngOnDestroy() {
-    if(this.menuSubscription) {
+    if (this.menuSubscription) {
       this.menuSubscription.unsubscribe();
     }
   }
