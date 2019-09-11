@@ -12,7 +12,8 @@ export const environment = {
     baseURL: 'admin',
     loginURL: 'login_check',
     userInfoURL: 'user-info',
-    menusURL: 'menus'
+    menusURL: 'menus',
+    panelURL: 'admin-panel'
   }
 };
 

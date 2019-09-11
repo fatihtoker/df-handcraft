@@ -1,7 +1,7 @@
 <div class="row dialog-wrapper">
     <h1 mat-dialog-title class="text-left">Kullanıcı Ekle</h1>
     <div mat-dialog-content>
-      <div class="col-sm-6">
+      <div class="col-sm-6 mb-4">
         <mat-form-field class="df-width-full">
           <input
             type="text"
@@ -12,7 +12,7 @@
           />
         </mat-form-field>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 mb-4">
         <mat-form-field class="df-width-full">
           <textarea
             placeholder="Açıklama"
@@ -23,20 +23,59 @@
           >
           </textarea>
         </mat-form-field>
-
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 mb-4">
+        <mat-form-field class="df-width-full">
           <mat-label>Kategori *</mat-label>
           <mat-select [(ngModel)]="product.category" name="category">
               <mat-option *ngFor="let category of categories" [value]="category.id">
                 {{category.displayName}}
               </mat-option>
           </mat-select>
+        </mat-form-field>
       </div>
-      <div class="col-xs-12 mt-5">
-        <p>Roller *</p>
-        <mat-checkbox *ngFor="let role of roles" color="primary" class="mr-2" [(ngModel)]="role.checked">{{role.displayName}}</mat-checkbox>
-      </div>
+      <div class="col-sm-6 mb-4">
+          <mat-form-field class="df-width-full">
+            <mat-label>Tipi</mat-label>
+            <mat-select [(ngModel)]="product.type" name="type">
+                <mat-option *ngFor="let type of types" [value]="type.id">
+                  {{type.displayName}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6 mb-4">
+            <label id="onSale" class="mr-3">Satışta mı? *</label>
+            <mat-radio-group aria-labelledby="onSale" [(ngModel)]="product.onSale" >
+                <mat-radio-button value="true" color="primary" class="mr-3">Evet</mat-radio-button>
+                <mat-radio-button value="false" color="primary">Hayır</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="col-sm-6 mb-4">
+            <mat-form-field class="df-width-full">
+              <input
+                type="number"
+                placeholder="Fiyat"
+                matInput
+                [(ngModel)]="product.price"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 mb-4 df-display-flex df-flex-align-flex-end df-flex-justify-flex-end">
+            <button mat-raised-button (click)="image.click()" class="mr-4">
+              Fotoğraf Seç *
+                <input
+                  (change)="onFileSelected($event.target)"
+                  type="file"
+                  hidden
+                  #image
+                  required
+                  accept="image/*"
+                />
+            </button>
+            <img class="product-image" [src]="imageSrc" alt="uploaded photo" *ngIf="imageSrc">
+            </div>
     </div>
     <div mat-dialog-actions>
       <div class="col-xs-12">

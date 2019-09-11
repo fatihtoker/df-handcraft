@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    this.menuService.getMenus();
     this.menuSubscription = this.dataService.getMenuObservable().subscribe(
       (response) => {
         if (response) {

@@ -8,6 +8,7 @@ export const environment = {
     baseURL: 'https://df-handcraft-api.herokuapp.com/admin',
     loginURL: 'login_check',
     userInfoURL: 'user-info',
-    menusURL: 'menus'
+    menusURL: 'menus',
+    panelURL: 'admin-panel'
   }
 };

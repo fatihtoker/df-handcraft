@@ -122,8 +122,36 @@ export class ApiService {
     headers = headers.append(
       'Authorization', 'Bearer ' + this.token,
     );
-    console.log(data);
     return this.http.post(`${baseUrl}/${path}`, JSON.stringify(data), { headers: headers })
+      .pipe(
+        timeout(30000),
+        map(body => this.handleStatus(body)),
+        catchError(err => this.handleError(err))
+      );
+  }
+  postFileWithCredentials(path: string, params: any, baseUrl: string = this.dfAdmin.baseURL): Observable<any> {
+    const formData: any = new FormData();
+
+        for (const key of Object.keys(params)) {
+            const param = params[key];
+
+            if (param instanceof FileList) {
+
+                if (param.length > 0) {
+                    for (let i = 0; i < param.length; i++) {
+                        formData.append(key, param[i], param[i].name, name);
+                    }
+                }
+            } else {
+                formData.append(key, params[key]);
+            }
+        }
+        console.log('formData: ', formData)
+    this.token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+    return this.http.post(`${baseUrl}/${path}`, formData, { headers: headers })
       .pipe(
         timeout(30000),
         map(body => this.handleStatus(body)),

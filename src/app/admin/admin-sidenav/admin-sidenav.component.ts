@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../menu-service/menu.service';
 import { DataService } from 'src/app/shared/data-service/data.service';
 import { Router } from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-admin-sidenav',
@@ -10,10 +11,12 @@ import { Router } from '@angular/router';
 })
 export class AdminSidenavComponent implements OnInit {
   menus: any;
+  dfAdmin: any;
 
   constructor(private menuService: MenuService, private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
+    this.dfAdmin = environment.dfAdmin;
     this.getMenus();
   }
   getMenus() {
@@ -32,16 +35,21 @@ export class AdminSidenavComponent implements OnInit {
           });
         }
         this.menus.sort((a, b) => a.order - b.order);
+        this.dataService.updateMenu(this.menus);
         this.setActivation();
       }, (err) => {
         this.menus = [];
       }
-    )
+    );
   }
   setActivation() {
     const routerUrl = this.router.url;
     const menuStartIndex = routerUrl.lastIndexOf('/') + 1;
     const currentMenu = routerUrl.substring(menuStartIndex, routerUrl.length);
+    if (currentMenu === this.dfAdmin.panelURL) {
+      this.menus[0].active = true;
+      return;
+    }
     for (const menu of this.menus) {
       if (menu.routerLink === currentMenu) {
         menu.active = true;

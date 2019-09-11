@@ -48,6 +48,6 @@ import {
     MatPaginatorModule,
     MatRadioModule,
     MatSelectModule
-  ],
+  ]
 })
 export class MaterialComponentsModule { }
