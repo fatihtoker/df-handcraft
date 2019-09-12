@@ -54,10 +54,10 @@ export class NavbarComponent implements OnInit {
           this.params = Object.assign(this.params, { query: query });
           refresh = true;
         }
-        } else{
-          this.router.navigate(['/']);
+        } else {
+         // this.router.navigate(['/']);
         }
-        
+
         if (refresh) {
           this.params = Object.assign({}, this.params);
           this.searchProducts = [];
@@ -67,7 +67,7 @@ export class NavbarComponent implements OnInit {
             }
             this.dataService.updateData(this.searchProducts);
             this.router.navigate(['/arama']);
-            
+
           }, err => {
           });
         }
