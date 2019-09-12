@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:500,400,300');
+@import 'utils';
 
 html, body {
   background: whitesmoke;
@@ -101,4 +102,14 @@ button {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.mat-row {
+  &:hover {
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    // -webkit-transform: scale(1.0001);
+    // -ms-transform: scale(1.0001);
+    // transform: scale(1.0001);
+    background-color: $df-yellow;
+  }
 }

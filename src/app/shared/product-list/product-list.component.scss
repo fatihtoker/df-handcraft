@@ -30,3 +30,15 @@
   border-radius: 10px;
   padding: 2px;
 }
+.card-image-container {
+  height: 250px;
+}
+.mat-card-image {
+  height: auto;
+  width: 100%
+}
+@media only screen and (max-width: 768px) and (min-width: 375px) {
+  .card-image-container {
+    height: 350px;
+  }
+}
