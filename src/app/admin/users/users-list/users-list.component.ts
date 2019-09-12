@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/shared/api/api.service';
 import { Subscription } from 'rxjs';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatPaginator, MatPaginatorIntl, MatTableDataSource } from '@angular/material';
 import { UsersAddComponent } from '../users-add/users-add.component';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 
@@ -19,22 +19,32 @@ export interface User {
 })
 export class UsersListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'email', 'roles', 'action'];
-  dataSource = [];
+  dataSource: MatTableDataSource<User>;
   apiSubscription: Subscription;
 
   loading = [];
+  pageLoading = false;
 
-  constructor(private apiService: ApiService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(private apiService: ApiService, public dialog: MatDialog, private _snackBar: MatSnackBar,
+    private paginatorInstance: MatPaginatorIntl) {
+      this.paginatorInstance.itemsPerPageLabel = 'Sayfa başına kullanıcı: ';
+     }
 
   ngOnInit() {
     this.loadData();
   }
   loadData() {
+    this.pageLoading = true;
     this.apiSubscription = this.apiService.getWithCredentials('users').subscribe(
       (response) => {
         this.dataSource = response.data;
+        this.dataSource.paginator = this.paginator;
+        this.pageLoading = false;
       }, (err) => {
         // handle error
+        this.pageLoading = false;
       }
     );
   }

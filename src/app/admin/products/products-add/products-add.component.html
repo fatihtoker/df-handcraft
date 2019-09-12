@@ -1,6 +1,6 @@
 <div class="row dialog-wrapper">
     <h1 mat-dialog-title class="text-left">Kullanıcı Ekle</h1>
-    <div mat-dialog-content>
+    <div mat-dialog-content class="row">
       <div class="col-sm-6 mb-4">
         <mat-form-field class="df-width-full">
           <input
@@ -47,8 +47,8 @@
         <div class="col-sm-6 mb-4">
             <label id="onSale" class="mr-3">Satışta mı? *</label>
             <mat-radio-group aria-labelledby="onSale" [(ngModel)]="product.onSale" >
-                <mat-radio-button value="true" color="primary" class="mr-3">Evet</mat-radio-button>
-                <mat-radio-button value="false" color="primary">Hayır</mat-radio-button>
+                <mat-radio-button [value]="true" color="primary" class="mr-3">Evet</mat-radio-button>
+                <mat-radio-button [value]="false" color="primary">Hayır</mat-radio-button>
             </mat-radio-group>
         </div>
         <div class="col-sm-6 mb-4">
@@ -62,7 +62,7 @@
               />
             </mat-form-field>
           </div>
-          <div class="col-xs-12 mb-4 df-display-flex df-flex-align-flex-end df-flex-justify-flex-end">
+          <div class="col-xs-12 mb-4 df-display-flex df-flex-align-flex-end df-flex-justify-flex-end df-flex-wrap-wrap">
             <button mat-raised-button (click)="image.click()" class="mr-4">
               Fotoğraf Seç *
                 <input
@@ -74,7 +74,8 @@
                   accept="image/*"
                 />
             </button>
-            <img class="product-image" [src]="imageSrc" alt="uploaded photo" *ngIf="imageSrc">
+            <a *ngIf="imageSrc">{{product.image[0].name}}</a>
+            <a *ngIf="!imageSrc" [href]="baseURL + product.imageURL" target="_blank">{{product.imageName}}</a>
             </div>
     </div>
     <div mat-dialog-actions>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MenuService } from '../menu-service/menu.service';
 import { DataService } from 'src/app/shared/data-service/data.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,8 @@ import {environment} from '../../../environments/environment';
 export class AdminSidenavComponent implements OnInit {
   menus: any;
   dfAdmin: any;
+
+  @Output() menuItemClicked = new EventEmitter();
 
   constructor(private menuService: MenuService, private dataService: DataService, private router: Router) { }
 
@@ -66,6 +68,7 @@ export class AdminSidenavComponent implements OnInit {
       }
       menu.active = false;
     }
+    this.menuItemClicked.emit();
   }
 
 }

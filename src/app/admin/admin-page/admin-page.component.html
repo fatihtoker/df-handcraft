@@ -2,7 +2,7 @@
 <mat-sidenav-container class="page-container df-height-full">
   <mat-sidenav [style.marginTop.px]="mobileQuery.matches ? 56 : 0" #sideNav [mode]="mobileQuery.matches ? 'over' : 'side'"
   [fixedInViewport]="mobileQuery.matches" [opened]="!mobileQuery.matches">
-  <app-admin-sidenav></app-admin-sidenav>
+  <app-admin-sidenav (menuItemClicked)="onMenuItemClicked()"></app-admin-sidenav>
 </mat-sidenav>
   <mat-sidenav-content>
     <div class="row p-5 df-no-margin df-height-full df-overflow-auto df-bg-color-main">

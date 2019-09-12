@@ -3,6 +3,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ApiService } from 'src/app/shared/api/api.service';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -20,7 +21,9 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
     onSale: null,
     price: null,
     type: null,
-    image: null
+    image: null,
+    imageURL: '',
+    imageName: ''
   };
   categories = [];
   types = [];
@@ -29,6 +32,8 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
   categorySubscription: Subscription;
   typeSubscription: Subscription;
 
+  baseURL = environment.baseURL;
+
   constructor(public dialogRef: MatDialogRef<ProductsAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService, private _snackBar: MatSnackBar) { }
 
@@ -36,15 +41,18 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
     this.getCategories();
     this.getTypes();
     if (this.data) {
-      this.product.id = this.data.id;
-      this.product.name = this.data.name;
-      this.product.category = this.data.category;
-      this.product.description = this.data.description;
-      this.product.onSale = this.data.onSale;
-      this.product.price = this.data.price;
-      this.product.type = this.data.type;
-      this.product.image = this.data.image;
+      this.product.id = this.data.obj.id;
+      this.product.name = this.data.obj.name;
+      this.product.category = this.data.obj.category.id;
+      this.product.description = this.data.obj.description;
+      this.product.onSale = this.data.obj.on_sale;
+      this.product.price = this.data.obj.price;
+      this.product.type = this.data.obj.type.id;
+      this.product.imageURL = this.data.img_url;
+      this.product.imageName = this.data.obj.image_name;
     }
+    console.log(this.data)
+    console.log(this.product)
   }
   ngOnDestroy() {
     if (this.categorySubscription) {

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  baseURL: 'http://df-api.localhost:8000',
   dfApi: {
     baseURL: 'api',
     version: 'v1'

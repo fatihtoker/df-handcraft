@@ -73,7 +73,6 @@ export class AdminHeaderComponent implements OnInit {
       case 'logOut':
         this.authService.unAuthenticate();
     }
-    console.log('action clicked: ', action);
   }
 
 }

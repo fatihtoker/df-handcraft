@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  baseURL: 'https://df-handcraft-api.herokuapp.com/',
   dfApi: {
     baseURL: 'https://df-handcraft-api.herokuapp.com/api',
     version: 'v1'

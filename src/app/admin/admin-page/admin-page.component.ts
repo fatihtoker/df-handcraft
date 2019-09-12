@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Title } from '@angular/platform-browser';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-admin-page',
@@ -12,6 +13,8 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;
+
+  @ViewChild('sideNav') sideNavRef: MatSidenav;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private title: Title) {
     this.title.setTitle('Admin Paneli - DF Handcraft');
@@ -25,5 +28,10 @@ export class AdminPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+  onMenuItemClicked() {
+    if (this.mobileQuery.matches) {
+      this.sideNavRef.toggle();
+    }
   }
 }

@@ -15,37 +15,37 @@
 
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.obj.id }}</td>
         </ng-container>
 
         <ng-container matColumnDef="category">
           <th mat-header-cell *matHeaderCellDef>Kategori</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.category?.display_name }}
+            {{ element.obj.category?.display_name }}
           </td>
         </ng-container>
 
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>İsim</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.obj.name }}</td>
         </ng-container>
 
         <ng-container matColumnDef="onSale">
           <th mat-header-cell *matHeaderCellDef>Satışta mı?</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.onSale ? "Evet" : "Hayır" }}
+            {{ element.obj.onSale ? "Evet" : "Hayır" }}
           </td>
         </ng-container>
 
         <ng-container matColumnDef="price">
           <th mat-header-cell *matHeaderCellDef>Fiyat</th>
-          <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.obj.price }}</td>
         </ng-container>
 
         <ng-container matColumnDef="type">
           <th mat-header-cell *matHeaderCellDef>Tipi</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.type ? element.type?.display_name : "-" }}
+            {{ element.obj.type ? element.obj.type?.display_name : "-" }}
           </td>
         </ng-container>
 
@@ -55,11 +55,11 @@
             <button
               mat-icon-button
               color="warn"
-              (click)="onRemoveItemClicked(element)"
+              (click)="onRemoveItemClicked(element.obj)"
             >
               <i
                 class="fa {{
-                  loading[element.id] ? 'fa-spinner fa-spin' : 'fa-trash'
+                  loading[element.obj.id] ? 'fa-spinner fa-spin' : 'fa-trash'
                 }}"
               ></i>
             </button>
@@ -75,7 +75,7 @@
 
 
 </ng-container>
-<mat-paginator
+<mat-paginator *ngIf="!pageLoading"
         [pageSizeOptions]="[5, 10, 20]"
         showFirstLastButtons
       ></mat-paginator>
