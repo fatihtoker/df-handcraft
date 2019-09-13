@@ -39,7 +39,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.pageLoading = true;
     this.apiSubscription = this.apiService.getWithCredentials('users').subscribe(
       (response) => {
-        this.dataSource = response.data;
+        this.dataSource = new MatTableDataSource<User>(response.data);
         this.dataSource.paginator = this.paginator;
         this.pageLoading = false;
       }, (err) => {

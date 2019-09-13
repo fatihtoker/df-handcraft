@@ -1,4 +1,4 @@
-<div class="row dialog-wrapper">
+<div class="row dialog-wrapper" *ngIf="!pageLoading">
     <h1 mat-dialog-title class="text-left">{{product.id ? 'Ürün Düzenle' : 'Ürün Ekle'}}</h1>
     <div mat-dialog-content class="row">
       <div class="col-sm-6 mb-4">
@@ -64,18 +64,19 @@
           </div>
           <div class="col-xs-12 mb-4 df-display-flex df-flex-align-flex-end df-flex-justify-flex-end df-flex-wrap-wrap">
             <button mat-raised-button (click)="image.click()" class="mr-4">
-              Fotoğraf Seç *
+              Fotoğrafları Seç *
                 <input
                   (change)="onFileSelected($event.target)"
                   type="file"
                   hidden
                   #image
                   required
+                  multiple
                   accept="image/*"
                 />
             </button>
-            <a *ngIf="imageSrc">{{product.image[0].name}}</a>
-            <a *ngIf="!imageSrc" [href]="baseURL + product.imageURL" target="_blank">{{product.imageName}}</a>
+            <a>{{product.images ? product.images.length : '0'}} fotoğraf seçildi.</a>
+            <!-- <a *ngIf="!imageSrc" [href]="baseURL + product.imageURL" target="_blank">{{product.imageName}}</a> -->
             </div>
     </div>
     <div mat-dialog-actions>
@@ -87,4 +88,9 @@
         </button>
       </div>
     </div>
+    <div class="spinner-wrapper df-display-flex df-flex-align-center df-flex-justify-center"
+  *ngIf="pageLoading">
+  <mat-progress-spinner class="spinner" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+</div>
   </div>

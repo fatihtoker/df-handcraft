@@ -21,12 +21,11 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
     onSale: null,
     price: null,
     type: null,
-    image: null,
-    imageURL: '',
-    imageName: ''
+    images: null,
   };
   categories = [];
   types = [];
+  pageLoading = false;
   imageSrc: any;
   loading = false;
   categorySubscription: Subscription;
@@ -38,18 +37,18 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    // todo: handle photos on update
     this.getCategories();
     this.getTypes();
     if (this.data) {
-      this.product.id = this.data.obj.id;
-      this.product.name = this.data.obj.name;
-      this.product.category = this.data.obj.category.id;
-      this.product.description = this.data.obj.description;
-      this.product.onSale = this.data.obj.on_sale;
-      this.product.price = this.data.obj.price;
-      this.product.type = this.data.obj.type.id;
-      this.product.imageURL = this.data.img_url;
-      this.product.imageName = this.data.obj.image_name;
+      this.product.id = this.data.id;
+      this.product.name = this.data.name;
+      this.product.category = this.data.category.id;
+      this.product.description = this.data.description;
+      this.product.onSale = this.data.on_sale;
+      this.product.price = this.data.price;
+      this.product.type = this.data.type.id;
+      this.product.images = this.data.images;
     }
     console.log(this.data)
     console.log(this.product)
@@ -63,6 +62,7 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
     }
   }
   getTypes() {
+    this.pageLoading = true;
     this.types = [{
       id: null,
       name: 'none',
@@ -79,12 +79,15 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
             }
           );
         }
+        this.pageLoading = false;
       }, (err) => {
+        this.pageLoading = false;
         // handle error
       }
     );
   }
   getCategories() {
+    this.pageLoading = true;
     this.categories = [];
     this.categorySubscription = this.api.getWithCredentials('products/categories').subscribe(
       (response) => {
@@ -97,19 +100,17 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
             }
           );
         }
+        this.pageLoading = false;
       }, (err) => {
         // handle error
+        this.pageLoading = false;
       }
     );
 
   }
   onFileSelected(eventTarget: any) {
-    const reader = new FileReader();
-    reader.readAsDataURL(eventTarget.files[0]);
-    reader.onload = (_event) => {
-      this.imageSrc = reader.result;
-    };
-    this.product.image = eventTarget.files;
+    this.product.images = eventTarget.files;
+    console.log(this.product.images);
   }
   onCancelClicked() {
     this.dialogRef.close();

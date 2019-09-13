@@ -57,7 +57,7 @@ export class ApiService {
     }
 
     this.errorSource.next(error);
-    if (!message) {
+    if (!message || (environment.production && code === 500)) {
       message = 'Bir hata meydana geldi.';
     }
     this._snackBar.open(message, '', {
@@ -139,7 +139,7 @@ export class ApiService {
 
                 if (param.length > 0) {
                     for (let i = 0; i < param.length; i++) {
-                        formData.append(key, param[i], param[i].name, name);
+                        formData.append(key + i, param[i], param[i].name, name);
                     }
                 }
             } else {
