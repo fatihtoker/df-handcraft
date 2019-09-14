@@ -74,9 +74,9 @@ $df-accent-palette: (
 
 // position and display
 .df-display-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 .df-flex-direction-row {
   -webkit-box-orient: horizontal;

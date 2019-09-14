@@ -1,0 +1,32 @@
+@import '../../../assets/scss/utils';
+
+@media only screen and (min-width: 768px) {
+  .current-image-container {
+    order: 2;
+  }
+  .all-images-container {
+    order: 1;
+    align-items: center;
+  }
+}
+.current-image-container {
+  //height: 250px;
+  max-height: 65vh;
+}
+.current-image {
+  height: 100%;
+  width: 100%
+}
+.all-images-container {
+  justify-content: space-between;
+}
+.image-box {
+  cursor: pointer;
+  height: 64px;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  &:hover {
+    -webkit-filter: unset;
+    filter: unset;
+  }
+}

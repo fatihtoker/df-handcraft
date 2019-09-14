@@ -1,8 +1,37 @@
-<div class="row p-5">
-  <div class="col-sm-6 left-container">
+<div class="row p-3" *ngIf="!loading">
+  <div class="col-sm-8 left-container df-display-flex df-flex-justify-center">
+      <mat-card class="df-display-flex df-flex-wrap-wrap">
+        <div class="current-image-container col-sm-9 p-3">
+          <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())">
+          <img class="current-image" *ngIf="images.length === 0" src="../../assets/images/product-placeholder.png" alt="Ürün Fotoğrafı">
+        </div>
+        <div class="all-images-container col-sm-3 col-xs-12 df-display-flex df-flex-wrap-wrap">
+          <div class="image-box col-xs-1 col-sm-12 df-display-flex df-flex-align-center df-flex-justify-center">
+              <i class="fa fa-lg fa-chevron-left"></i>
+          </div>
+          <div class="image-box col-xs-3 col-sm-12">
+            <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())">
+          </div>
+          <div class="image-box col-xs-3 col-sm-12">
+            <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())">
+          </div>
+          <div class="image-box col-xs-3 col-sm-12">
+            <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())">
+          </div>
+          <div class="image-box col-xs-1 col-sm-12 df-display-flex df-flex-align-center df-flex-justify-center">
+              <i class="fa fa-lg fa-chevron-right"></i>
+          </div>
+        </div>
+      </mat-card>
+  </div>
+  <div class="col-sm-4 right-container">
       HEY
   </div>
-  <div class="col-sm-6 right-container">
-      HEY
-  </div>
+</div>
+<div class="spinner-wrapper df-display-flex df-flex-align-center df-flex-justify-center" *ngIf="loading">
+  <mat-progress-spinner
+  class="spinner"
+  color="primary"
+  mode="indeterminate">
+</mat-progress-spinner>
 </div>
