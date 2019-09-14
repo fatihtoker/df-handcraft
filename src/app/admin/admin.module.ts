@@ -12,6 +12,10 @@ import { UsersListComponent } from './users/users-list/users-list.component';
 import { UsersAddComponent } from './users/users-add/users-add.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { ProductsAddComponent } from './products/products-add/products-add.component';
+import { ParameterTypesListComponent } from './parameter-types/parameter-types-list/parameter-types-list.component';
+import { ParameterTypesAddComponent } from './parameter-types/parameter-types-add/parameter-types-add.component';
+import { ParametersAddComponent } from './parameters/parameters-add/parameters-add.component';
+import { ParametersListComponent } from './parameters/parameters-list/parameters-list.component';
 
 @NgModule({
   imports: [
@@ -21,8 +25,8 @@ import { ProductsAddComponent } from './products/products-add/products-add.compo
     MaterialComponentsModule
   ],
   declarations: [HomeComponent, AdminLoginComponent, AdminPageComponent,
-    AdminHeaderComponent, AdminSidenavComponent, UsersListComponent, UsersAddComponent, ProductsListComponent, ProductsAddComponent],
+    AdminHeaderComponent, AdminSidenavComponent, UsersListComponent, UsersAddComponent, ProductsListComponent, ProductsAddComponent, ParameterTypesListComponent, ParameterTypesAddComponent, ParametersAddComponent, ParametersListComponent],
   exports: [HomeComponent],
-  entryComponents: [UsersAddComponent, ProductsAddComponent]
+  entryComponents: [UsersAddComponent, ProductsAddComponent, ParameterTypesAddComponent, ParametersAddComponent]
 })
 export class AdminModule { }

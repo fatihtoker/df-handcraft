@@ -1,31 +1,56 @@
-<div class="row p-3" *ngIf="!loading">
-  <div class="col-sm-8 left-container df-display-flex df-flex-justify-center">
+<div class="row p-3 df-display-flex df-flex-wrap-wrap" *ngIf="!loading">
+  <div class="col-sm-8 col-xs-12 left-container df-display-flex df-flex-justify-center">
       <mat-card class="df-display-flex df-flex-wrap-wrap">
         <div class="current-image-container col-sm-9 p-3">
-          <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())">
+          <ngx-image-zoom
+            *ngIf="images.length !== 0"
+            [thumbImage]="getImageSrc(getSelectedImage())"
+            [fullImage]="getImageSrc(getSelectedImage())"
+            [enableLens]="true"
+            [lensWidth]="200"
+            [lensHeight]="200"
+            [magnification]="0.8">
+          </ngx-image-zoom>
+          <!-- <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())"> -->
           <img class="current-image" *ngIf="images.length === 0" src="../../assets/images/product-placeholder.png" alt="Ürün Fotoğrafı">
         </div>
         <div class="all-images-container col-sm-3 col-xs-12 df-display-flex df-flex-wrap-wrap">
-          <div class="image-box col-xs-1 col-sm-12 df-display-flex df-flex-align-center df-flex-justify-center">
+          <div class="image-box col-xs-1 col-sm-12 df-display-flex df-flex-align-center df-flex-justify-center" (click)="onPreviousClicked()">
               <i class="fa fa-lg fa-chevron-left"></i>
+              <i class="fa fa-lg fa-chevron-up"></i>
           </div>
-          <div class="image-box col-xs-3 col-sm-12">
-            <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())">
+          <ng-container *ngFor="let image of images">
+            <div class="image-box col-xs-3 col-sm-12" [class.gray-scale]="!image.selected"  *ngIf="image.thumbnailVisible" (click)="onThumbnailImageClicked(image)">
+            <img class="current-image" [src]="getImageSrc(image)">
           </div>
-          <div class="image-box col-xs-3 col-sm-12">
-            <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())">
-          </div>
-          <div class="image-box col-xs-3 col-sm-12">
-            <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())">
-          </div>
-          <div class="image-box col-xs-1 col-sm-12 df-display-flex df-flex-align-center df-flex-justify-center">
+          </ng-container>
+
+          <div class="image-box col-xs-1 col-sm-12 df-display-flex df-flex-align-center df-flex-justify-center" (click)="onNextClicked()">
               <i class="fa fa-lg fa-chevron-right"></i>
+              <i class="fa fa-lg fa-chevron-down"></i>
           </div>
         </div>
       </mat-card>
   </div>
-  <div class="col-sm-4 right-container">
-      HEY
+  <div class="col-sm-4 col-xs-12 right-container">
+    <mat-card class="df-height-full df-display-flex df-flex-wrap-wrap">
+      <div class="top-side df-width-full">
+      <div class="col-xs-6 text-left df-no-padding">
+        <h1>{{product.name}}</h1>
+      </div>
+      <div class="col-xs-6 text-right df-no-padding">
+          <h1>{{product.price + ' &#8378;'}}</h1>
+      </div>
+      <div class="col-xs-12 text-left df-no-padding">
+          <p>{{product.description}}</p>
+      </div>
+      </div>
+
+      <div class="df-width-full df-display-flex df-flex-align-flex-end">
+          <button mat-raised-button color="primary" class="df-width-full" (click)=onOrderClicked()>Whatsapp Siparişi Ver</button>
+      </div>
+    </mat-card>
+
   </div>
 </div>
 <div class="spinner-wrapper df-display-flex df-flex-align-center df-flex-justify-center" *ngIf="loading">

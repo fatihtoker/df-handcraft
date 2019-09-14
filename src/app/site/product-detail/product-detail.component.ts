@@ -18,6 +18,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   id: number;
   routeSubscription: Subscription;
   aws = environment.aws;
+  thumbnailVisibleCount = 3;
+  thumbnailIndex = 0;
+  phoneNumber = environment.phoneNumber;
 
   product: ProductModel;
 
@@ -29,8 +32,45 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     })
 
     this.loadItem();
-  }
 
+  }
+  setThumbnailVisible() {
+    let index = 0;
+    for (const image of this.images) {
+      if (index <= this.thumbnailIndex + this.thumbnailVisibleCount - 1 && index >= this.thumbnailIndex) {
+        image.thumbnailVisible = true;
+      } else {
+        image.thumbnailVisible = false;
+      }
+      index++;
+    }
+  }
+  onPreviousClicked() {
+    if (this.thumbnailIndex === 0) {
+      return;
+    }
+    this.thumbnailIndex--;
+    this.setThumbnailVisible();
+  }
+  onNextClicked() {
+    if (this.thumbnailIndex === this.images.length - this.thumbnailVisibleCount) {
+      return;
+    }
+    this.thumbnailIndex++;
+    this.setThumbnailVisible();
+  }
+  onThumbnailImageClicked(image) {
+    this.setSelectedImage(image);
+  }
+  setSelectedImage(image) {
+    for (const item of this.images) {
+      if (image.name === item.name) {
+        item.selected = true;
+      } else {
+        item.selected = false;
+      }
+    }
+  }
   loadItem() {
     this.loading = true;
 
@@ -43,10 +83,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           this.images.push({
             folder: image.folder,
             name: image.unique_name,
-            selected: false
+            selected: false,
+            thumbnailVisible: false
           });
         }
         this.images[0].selected = true;
+        this.setThumbnailVisible();
       }, () => {
         this.loading = false;
       }
@@ -64,5 +106,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   getImageSrc(image) {
     return 'https://' + this.aws.bucketName + '.' + this.aws.baseURL + '/' + image.folder + '/' + image.name;
   }
+  onOrderClicked() {
+    let whatsAppUrl = 'https://web.whatsapp.com/send?';
+    whatsAppUrl += 'phone=' + this.phoneNumber + '&text=' + encodeURIComponent(window.location.href);
 
+    window.open(whatsAppUrl, '_blank');
+  }
 }

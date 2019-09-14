@@ -1,10 +1,11 @@
+@import '../../../assets/scss/utils';
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 4;
-  background-color: black;
 }
 .user-container {
   position: relative;
@@ -54,7 +55,7 @@ header {
       list-style: none;
       padding: 2px;
       &:hover {
-        background-color: black;
+        background-color: $df-blue;
         color: white;
       }
     }

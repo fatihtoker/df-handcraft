@@ -1,3 +1,5 @@
+@import '../../../assets/scss/utils';
+
 .navbar-toggler-icon {
   color: white;
 }
@@ -43,4 +45,17 @@ ul {
 }
 .search-icon {
   font-size: 3.5rem;
+}
+.toolbar-first-row {
+  background: $df-blue;
+}
+@media only screen and (min-width: 768px) {
+  .mat-toolbar-row {
+    padding: 0 32px !important;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .mat-toolbar-row {
+    padding: 0 128px !important;
+  }
 }

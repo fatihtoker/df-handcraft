@@ -5,13 +5,15 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { HomeComponent } from './home/home.component';
 import {MaterialComponentsModule} from '../shared/material-components.module';
 import {SharedModule} from '../shared/shared.module';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 @NgModule({
   imports: [
     CommonModule,
     SiteRoutingModule,
     MaterialComponentsModule,
-    SharedModule
+    SharedModule,
+    NgxImageZoomModule.forRoot()
   ],
   declarations: [ProductDetailComponent, HomeComponent],
   exports: []

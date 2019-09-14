@@ -1,0 +1,37 @@
+<div class="row dialog-wrapper">
+  <h1 mat-dialog-title class="text-left">{{parameterType.id ? 'Parametre Türü Düzenle' : 'Parametre Türü Ekle'}}</h1>
+  <div mat-dialog-content>
+    <div class="col-sm-6">
+      <mat-form-field class="df-width-full">
+        <input
+          type="text"
+          placeholder="İsim"
+          matInput
+          [(ngModel)]="parameterType.name"
+          required
+        />
+      </mat-form-field>
+      <small class="df-color-warn" *ngIf="parameterType.id">* Dikkat, bu değeri değiştirmek uygulamanın bazı fonksiyonlarını bozabilir!</small>
+    </div>
+    <div class="col-sm-6">
+      <mat-form-field class="df-width-full">
+        <input
+          type="text"
+          placeholder="Görünür İsim"
+          matInput
+          [(ngModel)]="parameterType.displayName"
+          required
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <div class="col-xs-12">
+      <button mat-button (click)="onCancelClicked()">Vazgeç</button>
+      <button mat-button color="primary" (click)="onSaveClicked()">
+        <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+        <span *ngIf="!loading">Kaydet</span>
+      </button>
+    </div>
+  </div>
+</div>

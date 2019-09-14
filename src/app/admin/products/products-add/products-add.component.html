@@ -1,96 +1,97 @@
-<div class="row dialog-wrapper" *ngIf="!pageLoading">
-    <h1 mat-dialog-title class="text-left">{{product.id ? 'Ürün Düzenle' : 'Ürün Ekle'}}</h1>
-    <div mat-dialog-content class="row">
-      <div class="col-sm-6 mb-4">
-        <mat-form-field class="df-width-full">
-          <input
-            type="text"
-            placeholder="İsim"
-            matInput
-            [(ngModel)]="product.name"
-            required
-          />
-        </mat-form-field>
-      </div>
-      <div class="col-sm-6 mb-4">
-        <mat-form-field class="df-width-full">
-          <textarea
-            placeholder="Açıklama"
-            rows="1"
-            matInput
-            [(ngModel)]="product.description"
-            required
-          >
-          </textarea>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-6 mb-4">
-        <mat-form-field class="df-width-full">
-          <mat-label>Kategori *</mat-label>
-          <mat-select [(ngModel)]="product.category" name="category">
-              <mat-option *ngFor="let category of categories" [value]="category.id">
-                {{category.displayName}}
-              </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-6 mb-4">
+<div class="row dialog-wrapper" >
+    <ng-container *ngIf="!loading">
+      <h1 mat-dialog-title class="text-left">{{product.id ? 'Ürün Düzenle' : 'Ürün Ekle'}}</h1>
+      <div mat-dialog-content class="row">
+        <div class="col-sm-6 mb-4">
           <mat-form-field class="df-width-full">
-            <mat-label>Tipi</mat-label>
-            <mat-select [(ngModel)]="product.type" name="type">
-                <mat-option *ngFor="let type of types" [value]="type.id">
-                  {{type.displayName}}
+            <input
+              type="text"
+              placeholder="İsim"
+              matInput
+              [(ngModel)]="product.name"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6 mb-4">
+          <mat-form-field class="df-width-full">
+            <textarea
+              placeholder="Açıklama"
+              rows="1"
+              matInput
+              [(ngModel)]="product.description"
+              required
+            >
+            </textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6 mb-4">
+          <mat-form-field class="df-width-full">
+            <mat-label>Kategori *</mat-label>
+            <mat-select [(ngModel)]="product.category" name="category">
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                  {{category.displayName}}
                 </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="col-sm-6 mb-4">
-            <label id="onSale" class="mr-3">Satışta mı? *</label>
-            <mat-radio-group aria-labelledby="onSale" [(ngModel)]="product.onSale" >
-                <mat-radio-button [value]="true" color="primary" class="mr-3">Evet</mat-radio-button>
-                <mat-radio-button [value]="false" color="primary">Hayır</mat-radio-button>
-            </mat-radio-group>
-        </div>
-        <div class="col-sm-6 mb-4">
             <mat-form-field class="df-width-full">
-              <input
-                type="number"
-                placeholder="Fiyat"
-                matInput
-                [(ngModel)]="product.price"
-                required
-              />
+              <mat-label>Tipi</mat-label>
+              <mat-select [(ngModel)]="product.type" name="type">
+                  <mat-option *ngFor="let type of types" [value]="type.id">
+                    {{type.displayName}}
+                  </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-xs-12 mb-4 df-display-flex df-flex-align-flex-end df-flex-justify-flex-end df-flex-wrap-wrap">
-            <button mat-raised-button (click)="image.click()" class="mr-4">
-              Fotoğrafları Seç *
+          <div class="col-sm-6 mb-4">
+              <label id="onSale" class="mr-3">Satışta mı? *</label>
+              <mat-radio-group aria-labelledby="onSale" [(ngModel)]="product.onSale" >
+                  <mat-radio-button [value]="true" color="primary" class="mr-3">Evet</mat-radio-button>
+                  <mat-radio-button [value]="false" color="primary">Hayır</mat-radio-button>
+              </mat-radio-group>
+          </div>
+          <div class="col-sm-6 mb-4">
+              <mat-form-field class="df-width-full">
                 <input
-                  (change)="onFileSelected($event.target)"
-                  type="file"
-                  hidden
-                  #image
+                  type="number"
+                  placeholder="Fiyat"
+                  matInput
+                  [(ngModel)]="product.price"
                   required
-                  multiple
-                  accept="image/*"
                 />
-            </button>
-            <a>{{product.images ? product.images.length : '0'}} fotoğraf seçildi.</a>
-            <!-- <a *ngIf="!imageSrc" [href]="baseURL + product.imageURL" target="_blank">{{product.imageName}}</a> -->
+              </mat-form-field>
             </div>
-    </div>
-    <div mat-dialog-actions>
-      <div class="col-xs-12">
-        <button mat-button (click)="onCancelClicked()">Vazgeç</button>
-        <button mat-button color="primary" (click)="onSaveClicked()">
-          <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
-          <span *ngIf="!loading">Kaydet</span>
-        </button>
+            <div class="col-xs-12 mb-4 df-display-flex df-flex-align-flex-end df-flex-justify-flex-end df-flex-wrap-wrap">
+              <button mat-raised-button (click)="image.click()" class="mr-4">
+                Fotoğrafları Seç *
+                  <input
+                    (change)="onFileSelected($event.target)"
+                    type="file"
+                    hidden
+                    #image
+                    required
+                    multiple
+                    accept="image/*"
+                  />
+              </button>
+              <a>{{product.images ? product.images.length : '0'}} fotoğraf seçildi.</a>
+              </div>
       </div>
-    </div>
+      <div mat-dialog-actions>
+        <div class="col-xs-12">
+          <button mat-button (click)="onCancelClicked()">Vazgeç</button>
+          <button mat-button color="primary" (click)="onSaveClicked()">
+            <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+            <span *ngIf="!loading">Kaydet</span>
+          </button>
+        </div>
+      </div>
+    </ng-container>
     <div class="spinner-wrapper df-display-flex df-flex-align-center df-flex-justify-center"
-  *ngIf="pageLoading">
-  <mat-progress-spinner class="spinner" color="primary" mode="indeterminate">
-  </mat-progress-spinner>
+      *ngIf="loading">
+      <mat-progress-spinner class="spinner" color="primary" mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
 </div>
-  </div>

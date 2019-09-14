@@ -33,10 +33,6 @@ export class AdminHeaderComponent implements OnInit {
   ngOnInit() {
     this.actions.push(
       {
-        name: 'Profil',
-        action: 'profile'
-      },
-      {
         name: 'Çıkış Yap',
         action: 'logOut'
       }

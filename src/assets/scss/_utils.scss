@@ -153,6 +153,9 @@ $df-accent-palette: (
 .df-pos-relative {
   position: relative;
 }
+.df-mt-icon {
+  margin-top: 1.2rem !important;
+}
 
 //typoghraphy
 .df-font-weight-600 {
@@ -184,6 +187,9 @@ $df-accent-palette: (
 }
 .df-color-gold {
   color: #f1bd7f;
+}
+.df-color-warn {
+  color: #f44336;
 }
 .df-color-dark-blue {
   color: #0d47a1;

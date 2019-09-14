@@ -19,7 +19,8 @@ export const environment = {
   aws: {
     bucketName: 'df-handcraft-product-images',
     baseURL: 's3.us-east-2.amazonaws.com'
-  }
+  },
+  phoneNumber: '905383130883'
 };
 
 /*

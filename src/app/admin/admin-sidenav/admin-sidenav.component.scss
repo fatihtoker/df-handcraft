@@ -1,3 +1,4 @@
+@import '../../../assets/scss/utils';
 .menu-item {
   font-size: 17px;
 }
@@ -5,14 +6,14 @@
   margin-bottom: 20px;
   border-radius: 15px 0 0 15px;
   color: white;
-  transition: background-color .3s ease-in,
+  transition: all .3s ease-in,
               color .3s ease-in;
   &:hover {
     background-color: white;
-    color: black;
+    color: $df-blue;
   }
 }
 .menu-active {
   background-color: white;
-  color: black;
+  color: $df-blue;
 }

@@ -7,6 +7,8 @@ import { AuthGuardService } from './auth-service/auth-guard.service';
 import { AuthRedirectService } from './auth-service/auth-redirect.service';
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
+import { ParameterTypesListComponent } from './parameter-types/parameter-types-list/parameter-types-list.component';
+import { ParametersListComponent } from './parameters/parameters-list/parameters-list.component';
 
 
 const routes: Routes = [
@@ -14,7 +16,9 @@ const routes: Routes = [
   {path: '', component: AdminPageComponent, canActivate: [AuthGuardService], children: [
     {path: '', component: HomeComponent},
     {path: 'kullanicilar', component: UsersListComponent},
-    {path: 'urunler', component: ProductsListComponent}
+    {path: 'urunler', component: ProductsListComponent},
+    {path: 'parametre-turleri', component: ParameterTypesListComponent},
+    {path: 'parametreler', component: ParametersListComponent}
   ]}
 ];
 
