@@ -9,14 +9,13 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductListComponent implements OnInit {
 
-  baseURL = environment.baseURL;
+  aws = environment.aws;
 
   constructor() { }
   @Input() products: ProductModel[];
   isHovered = [false];
 
   ngOnInit() {
-    console.log(this.products);
   }
   mouseEntered(id: any) {
     this.isHovered[id] = true;

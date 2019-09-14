@@ -10,8 +10,8 @@
           </mat-card-subtitle>
         </mat-card-header>
         <div class="card-image-container df-display-flex df-flex-justify-center df-width-full">
-          <img mat-card-image *ngIf="model.imgUrl" [src]="baseURL + model.imgUrl" alt="Ürün Fotoğrafı">
-          <img mat-card-image *ngIf="!model.imgUrl" src="../../assets/images/product-placeholder.png" alt="Ürün Fotoğrafı">
+          <img mat-card-image *ngIf="model.images.length > 0" [src]="'https://' + aws.bucketName + '.' + aws.baseURL + '/' + model.images[0]?.folder + '/' + model.images[0]?.unique_name" alt="Ürün Fotoğrafı">
+          <img mat-card-image *ngIf="model.images.length === 0" src="../../assets/images/product-placeholder.png" alt="Ürün Fotoğrafı">
         </div>
         <mat-card-footer class="df-width-full df-pos-absolute text-left">
             <div class="desc-text df-bg-color-blue df-color-white text-center">

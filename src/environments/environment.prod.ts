@@ -11,5 +11,9 @@ export const environment = {
     userInfoURL: 'user-info',
     menusURL: 'menus',
     panelURL: 'admin-panel'
+  },
+  aws: {
+    bucketName: 'df-prod-images',
+    baseURL: 's3.us-east-2.amazonaws.com'
   }
 };
