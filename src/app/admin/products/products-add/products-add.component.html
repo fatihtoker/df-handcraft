@@ -1,8 +1,8 @@
 <div class="row dialog-wrapper" >
-    <ng-container *ngIf="!loading">
+    <ng-container *ngIf="!pageLoading">
       <h1 mat-dialog-title class="text-left">{{product.id ? 'Ürün Düzenle' : 'Ürün Ekle'}}</h1>
-      <div mat-dialog-content class="row">
-        <div class="col-sm-6 mb-4">
+      <div mat-dialog-content class="row df-display-flex df-flex-wrap-wrap">
+        <div class="col-sm-6 col-xs-12 mb-4">
           <mat-form-field class="df-width-full">
             <input
               type="text"
@@ -12,8 +12,11 @@
               required
             />
           </mat-form-field>
+          <small class="df-color-warn form-error-message" *ngFor="let err of errors.name?.violations">
+            * {{err.message}}
+          </small>
         </div>
-        <div class="col-sm-6 mb-4">
+        <div class="col-sm-6 col-xs-12 mb-4">
           <mat-form-field class="df-width-full">
             <textarea
               placeholder="Açıklama"
@@ -24,8 +27,11 @@
             >
             </textarea>
           </mat-form-field>
+          <small class="df-color-warn form-error-message" *ngFor="let err of errors.product?.violations">
+            * {{err.message}}
+          </small>
         </div>
-        <div class="col-sm-6 mb-4">
+        <div class="col-sm-6 col-xs-12 mb-4">
           <mat-form-field class="df-width-full">
             <mat-label>Kategori *</mat-label>
             <mat-select [(ngModel)]="product.category" name="category">
@@ -34,8 +40,11 @@
                 </mat-option>
             </mat-select>
           </mat-form-field>
+          <small class="df-color-warn form-error-message" *ngFor="let err of errors.category?.violations">
+            * {{err.message}}
+          </small>
         </div>
-        <div class="col-sm-6 mb-4">
+        <div class="col-sm-6 col-xs-12 mb-4">
             <mat-form-field class="df-width-full">
               <mat-label>Tipi</mat-label>
               <mat-select [(ngModel)]="product.type" name="type">
@@ -44,15 +53,21 @@
                   </mat-option>
               </mat-select>
             </mat-form-field>
+            <small class="df-color-warn form-error-message" *ngFor="let err of errors.type?.violations">
+              * {{err.message}}
+            </small>
           </div>
-          <div class="col-sm-6 mb-4">
+          <div class="col-sm-6 col-xs-12 mb-4">
               <label id="onSale" class="mr-3">Satışta mı? *</label>
               <mat-radio-group aria-labelledby="onSale" [(ngModel)]="product.onSale" >
                   <mat-radio-button [value]="true" color="primary" class="mr-3">Evet</mat-radio-button>
                   <mat-radio-button [value]="false" color="primary">Hayır</mat-radio-button>
               </mat-radio-group>
+              <small class="df-color-warn form-error-message" *ngFor="let err of errors.onSale?.violations">
+                * {{err.message}}
+              </small>
           </div>
-          <div class="col-sm-6 mb-4">
+          <div class="col-sm-6 col-xs-12 mb-4">
               <mat-form-field class="df-width-full">
                 <input
                   type="number"
@@ -62,6 +77,9 @@
                   required
                 />
               </mat-form-field>
+              <small class="df-color-warn form-error-message" *ngFor="let err of errors.price?.violations">
+                * {{err.message}}
+              </small>
             </div>
             <div class="col-xs-12 mb-4 df-display-flex df-flex-align-flex-end df-flex-justify-flex-end df-flex-wrap-wrap">
               <button mat-raised-button (click)="image.click()" class="mr-4">
@@ -90,7 +108,7 @@
       </div>
     </ng-container>
     <div class="spinner-wrapper df-display-flex df-flex-align-center df-flex-justify-center"
-      *ngIf="loading">
+      *ngIf="pageLoading">
       <mat-progress-spinner class="spinner" color="primary" mode="indeterminate">
       </mat-progress-spinner>
     </div>

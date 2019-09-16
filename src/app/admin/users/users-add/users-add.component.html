@@ -1,7 +1,7 @@
 <div class="row dialog-wrapper">
   <h1 mat-dialog-title class="text-left">{{user.id ? 'Kullanıcı Düzenle' : 'Kullanıcı Ekle'}}</h1>
-  <div mat-dialog-content>
-    <div class="col-sm-6">
+  <div mat-dialog-content class="row df-display-flex df-flex-wrap-wrap">
+    <div class="col-sm-6 col-xs-12">
       <mat-form-field class="df-width-full">
         <input
           type="text"
@@ -11,8 +11,11 @@
           required
         />
       </mat-form-field>
+      <small class="df-color-warn form-error-message" *ngFor="let err of errors.email?.violations">
+        * {{err.message}}
+      </small>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-xs-12">
       <mat-form-field class="df-width-full">
         <input
           type="password"
@@ -22,11 +25,17 @@
           required
         />
       </mat-form-field>
+      <small class="df-color-warn form-error-message" *ngFor="let err of errors.password?.violations">
+        * {{err.message}}
+      </small>
 
     </div>
     <div class="col-xs-12 mt-5">
       <p>Roller *</p>
       <mat-checkbox *ngFor="let role of roles" color="primary" class="mr-2" [(ngModel)]="role.checked">{{role.displayName}}</mat-checkbox>
+      <small class="df-color-warn form-error-message" *ngFor="let err of errors.roles?.violations">
+        * {{err.message}}
+      </small>
     </div>
   </div>
   <div mat-dialog-actions>

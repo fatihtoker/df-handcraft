@@ -1,7 +1,7 @@
 <div class="row dialog-wrapper">
-  <h1 mat-dialog-title class="text-left">{{parameter.id ? 'Parametre Türü Düzenle' : 'Parametre Türü Ekle'}}</h1>
-  <div mat-dialog-content>
-    <div class="col-sm-6">
+  <h1 mat-dialog-title class="text-left">{{parameter.id ? 'Parametre Düzenle' : 'Parametre Ekle'}}</h1>
+  <div mat-dialog-content class="row df-display-flex df-flex-wrap-wrap">
+    <div class="col-sm-6 col-xs-12">
       <mat-form-field class="df-width-full">
         <input
           type="text"
@@ -11,9 +11,12 @@
           required
         />
       </mat-form-field>
-      <small class="df-color-warn" *ngIf="parameter.id">* Dikkat, bu değeri değiştirmek uygulamanın bazı fonksiyonlarını bozabilir!</small>
+      <small class="df-color-warn form-error-message" *ngIf="parameter.id">* Dikkat, bu değeri değiştirmek uygulamanın bazı fonksiyonlarını bozabilir!</small>
+      <small class="df-color-warn form-error-message" *ngFor="let err of errors.name?.violations">
+        * {{err.message}}
+      </small>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-xs-12">
       <mat-form-field class="df-width-full">
         <input
           type="text"
@@ -23,8 +26,11 @@
           required
         />
       </mat-form-field>
+      <small class="df-color-warn form-error-message" *ngFor="let err of errors.displayName?.violations">
+       * {{err.message}}
+      </small>
     </div>
-    <div class="col-sm-6 mt-4">
+    <div class="col-sm-6 col-xs-12 mt-4">
       <mat-form-field class="df-width-full">
         <mat-label>Parametre Türü *</mat-label>
         <mat-select [(ngModel)]="parameter.parameterType" name="parameterType">
@@ -33,7 +39,10 @@
             </mat-option>
         </mat-select>
       </mat-form-field>
-      <small class="df-color-warn" *ngIf="parameter.id">* Dikkat, bu değeri değiştirmek uygulamanın bazı fonksiyonlarını bozabilir!</small>
+      <small class="df-color-warn form-error-message" *ngIf="parameter.id">* Dikkat, bu değeri değiştirmek uygulamanın bazı fonksiyonlarını bozabilir!</small>
+      <small class="df-color-warn form-error-message" *ngFor="let err of errors.parameterType?.violations">
+        * {{err.message}}
+      </small>
     </div>
   </div>
   <div mat-dialog-actions>

@@ -33,7 +33,7 @@
     height: 84px;
     padding: 3px 0;
   }
-  ::ng-deep .ngxImageZoomContainer{
+  ::ng-deep .ngxImageZoomContainer, .mobile-viewer{
     height: 400px !important;
   }
 
@@ -46,7 +46,7 @@
 
 @media (min-width: 481px) and (max-width: 767px) {
 
-  ::ng-deep .ngxImageZoomContainer{
+  ::ng-deep .ngxImageZoomContainer, .mobile-viewer{
     height: 350px !important;
   }
   .image-box {
@@ -63,7 +63,7 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
 
-  ::ng-deep .ngxImageZoomContainer{
+  ::ng-deep .ngxImageZoomContainer, .mobile-viewer{
     height: 200px !important;
   }
   .mat-card {
@@ -87,6 +87,10 @@
   .fa-chevron-left, .fa-chevron-right {
     display: none;
   }
+  .mobile-viewer {
+    display: none;
+  }
+
 
 }
 @media only screen and (max-width: 767px) {
@@ -97,9 +101,14 @@
     margin-bottom: 4rem;
     min-height: 400px;
   }
+  ngx-image-zoom {
+    display: none;
+  }
+
 }
 .current-image-container {
   border-radius: 4px;
+  max-height: 75vh;
 }
 .current-image {
   height: 100%;

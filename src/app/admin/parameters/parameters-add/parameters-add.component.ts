@@ -14,11 +14,13 @@ export class ParametersAddComponent implements OnInit, OnDestroy {
     id: null,
     name: '',
     displayName: '',
-    parameterType: null
+    parameterType: ''
   };
   loading = false;
   apiSubscription: Subscription;
+  parameterTypeSubscription: Subscription;
   parameterTypes = [];
+  errors = {};
 
   constructor(public dialogRef: MatDialogRef<ParametersAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService, private _snackBar: MatSnackBar) { }
@@ -36,6 +38,9 @@ export class ParametersAddComponent implements OnInit, OnDestroy {
     if (this.apiSubscription) {
       this.apiSubscription.unsubscribe();
     }
+    if (this.parameterTypeSubscription) {
+      this.parameterTypeSubscription.unsubscribe();
+    }
   }
   onCancelClicked() {
     this.dialogRef.close();
@@ -43,7 +48,7 @@ export class ParametersAddComponent implements OnInit, OnDestroy {
   onSaveClicked() {
     this.loading = true;
 
-    this.api.postWithCredentials('parameters/create', this.parameter).subscribe(
+    this.apiSubscription = this.api.postWithCredentials('parameters/create', this.parameter).subscribe(
       (response) => {
         this.loading = false;
         this._snackBar.open(response.message, '', {
@@ -52,12 +57,13 @@ export class ParametersAddComponent implements OnInit, OnDestroy {
         this.dialogRef.close();
       }, (err) => {
         this.loading = false;
+        this.errors = err.errors;
       }
     );
   }
   getParameterTypes() {
     this.loading = true;
-    this.apiSubscription = this.api.getWithCredentials('parameter-types').subscribe(
+    this.parameterTypeSubscription = this.api.getWithCredentials('parameter-types').subscribe(
       (response) => {
         this.parameterTypes = response.data;
         this.loading = false;

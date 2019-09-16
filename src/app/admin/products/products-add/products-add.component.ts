@@ -16,12 +16,12 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
   product = {
     id: '',
     name: '',
-    category: null,
+    category: '',
     description: '',
-    onSale: null,
-    price: null,
-    type: null,
-    images: null,
+    onSale: '',
+    price: '',
+    type: '',
+    images: '',
   };
   categories = [];
   types = [];
@@ -30,6 +30,8 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
   loading = false;
   categorySubscription: Subscription;
   typeSubscription: Subscription;
+  apiSubscription: Subscription;
+  errors = {};
 
   baseURL = environment.baseURL;
 
@@ -59,6 +61,9 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
     }
     if (this.typeSubscription) {
       this.typeSubscription.unsubscribe();
+    }
+    if (this.apiSubscription) {
+      this.apiSubscription.unsubscribe();
     }
   }
   getTypes() {
@@ -116,9 +121,10 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
   onSaveClicked() {
+    this.errors = [];
     this.loading = true;
 
-    this.api.postFileWithCredentials('products/create', this.product).subscribe(
+    this.apiSubscription = this.api.postFileWithCredentials('products/create', this.product).subscribe(
       (response) => {
         this.loading = false;
         this._snackBar.open(response.message, '', {
@@ -127,6 +133,7 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
         this.dialogRef.close();
       }, (err) => {
         this.loading = false;
+        this.errors = err.errors;
       }
     );
   }

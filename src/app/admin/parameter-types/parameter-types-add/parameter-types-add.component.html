@@ -1,7 +1,7 @@
 <div class="row dialog-wrapper">
   <h1 mat-dialog-title class="text-left">{{parameterType.id ? 'Parametre Türü Düzenle' : 'Parametre Türü Ekle'}}</h1>
-  <div mat-dialog-content>
-    <div class="col-sm-6">
+  <div mat-dialog-content class="row df-flex-wrap-wrap df-display-flex">
+    <div class="col-sm-6 col-xs-12">
       <mat-form-field class="df-width-full">
         <input
           type="text"
@@ -11,9 +11,12 @@
           required
         />
       </mat-form-field>
-      <small class="df-color-warn" *ngIf="parameterType.id">* Dikkat, bu değeri değiştirmek uygulamanın bazı fonksiyonlarını bozabilir!</small>
+      <small class="df-color-warn form-error-message" *ngIf="parameterType.id">* Dikkat, bu değeri değiştirmek uygulamanın bazı fonksiyonlarını bozabilir!</small>
+      <small class="df-color-warn form-error-message" *ngFor="let err of errors.name?.violations">
+        * {{err.message}}
+      </small>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-xs-12">
       <mat-form-field class="df-width-full">
         <input
           type="text"
@@ -23,6 +26,9 @@
           required
         />
       </mat-form-field>
+      <small class="df-color-warn form-error-message" *ngFor="let err of errors.displayName?.violations">
+        * {{err.message}}
+      </small>
     </div>
   </div>
   <div mat-dialog-actions>

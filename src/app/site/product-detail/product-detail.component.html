@@ -12,6 +12,7 @@
             [magnification]="0.8">
           </ngx-image-zoom>
           <!-- <img *ngIf="images.length !== 0" class="current-image" [src]="getImageSrc(getSelectedImage())"> -->
+          <img class="current-image mobile-viewer df-height-full" *ngIf="images.length !== 0" [src]="getImageSrc(getSelectedImage())" alt="Ürün Fotoğrafı">
           <img class="current-image" *ngIf="images.length === 0" src="../../assets/images/product-placeholder.png" alt="Ürün Fotoğrafı">
         </div>
         <div class="all-images-container col-sm-3 col-xs-12 df-display-flex df-flex-wrap-wrap">

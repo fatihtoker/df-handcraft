@@ -17,6 +17,7 @@ export class ParameterTypesAddComponent implements OnInit, OnDestroy {
   };
   loading = false;
   apiSubscription: Subscription;
+  errors = {};
 
   constructor(public dialogRef: MatDialogRef<ParameterTypesAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService, private _snackBar: MatSnackBar) { }
@@ -39,7 +40,7 @@ export class ParameterTypesAddComponent implements OnInit, OnDestroy {
   onSaveClicked() {
     this.loading = true;
 
-    this.api.postWithCredentials('parameter-types/create', this.parameterType).subscribe(
+    this.apiSubscription = this.api.postWithCredentials('parameter-types/create', this.parameterType).subscribe(
       (response) => {
         this.loading = false;
         this._snackBar.open(response.message, '', {
@@ -48,6 +49,7 @@ export class ParameterTypesAddComponent implements OnInit, OnDestroy {
         this.dialogRef.close();
       }, (err) => {
         this.loading = false;
+        this.errors = err.errors;
       }
     );
   }

@@ -18,10 +18,12 @@ export class UsersAddComponent implements OnInit, OnDestroy {
     roles: []
   };
 
+  errors = {};
   roles = [];
   userRoles = [];
   loading = false;
   apiSubscription: Subscription;
+  roleSubscription: Subscription;
 
   constructor(public dialogRef: MatDialogRef<UsersAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService, private _snackBar: MatSnackBar) { }
@@ -36,7 +38,7 @@ export class UsersAddComponent implements OnInit, OnDestroy {
   }
   getRoles() {
     this.roles = [];
-    this.apiSubscription = this.api.getWithCredentials('roles').subscribe(
+    this.roleSubscription = this.api.getWithCredentials('roles').subscribe(
       (response) => {
         for (const role of response.data) {
           this.roles.push(
@@ -67,6 +69,9 @@ export class UsersAddComponent implements OnInit, OnDestroy {
     if (this.apiSubscription) {
       this.apiSubscription.unsubscribe();
     }
+    if (this.roleSubscription) {
+      this.roleSubscription.unsubscribe();
+    }
   }
   onCancelClicked() {
     this.dialogRef.close();
@@ -76,7 +81,7 @@ export class UsersAddComponent implements OnInit, OnDestroy {
 
     this.user.roles = this.roles.filter((el) =>  el.checked);
 
-    this.api.postWithCredentials('users/create', this.user).subscribe(
+    this.apiSubscription = this.api.postWithCredentials('users/create', this.user).subscribe(
       (response) => {
         this.loading = false;
         this._snackBar.open(response.message, '', {
@@ -85,6 +90,7 @@ export class UsersAddComponent implements OnInit, OnDestroy {
         this.dialogRef.close();
       }, (err) => {
         this.loading = false;
+        this.errors = err.errors;
       }
     );
   }
