@@ -18,7 +18,7 @@ export class UsersAddComponent implements OnInit, OnDestroy {
     roles: []
   };
 
-  errors = {};
+  errors: any =  {};
   roles = [];
   userRoles = [];
   loading = false;

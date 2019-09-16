@@ -31,7 +31,7 @@ export class ProductsAddComponent implements OnInit, OnDestroy {
   categorySubscription: Subscription;
   typeSubscription: Subscription;
   apiSubscription: Subscription;
-  errors = {};
+  errors: any = {};
 
   baseURL = environment.baseURL;
 

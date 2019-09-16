@@ -17,7 +17,7 @@ export class ParameterTypesAddComponent implements OnInit, OnDestroy {
   };
   loading = false;
   apiSubscription: Subscription;
-  errors = {};
+  errors: any = {};
 
   constructor(public dialogRef: MatDialogRef<ParameterTypesAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService, private _snackBar: MatSnackBar) { }

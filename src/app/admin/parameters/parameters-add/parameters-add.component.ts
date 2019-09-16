@@ -20,7 +20,7 @@ export class ParametersAddComponent implements OnInit, OnDestroy {
   apiSubscription: Subscription;
   parameterTypeSubscription: Subscription;
   parameterTypes = [];
-  errors = {};
+  errors: any = {};
 
   constructor(public dialogRef: MatDialogRef<ParametersAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService, private _snackBar: MatSnackBar) { }
