@@ -1,4 +1,4 @@
-@import '../../../assets/scss/utils';
+@import '../../../assets/scss/variables';
 
 .navbar-toggler-icon {
   color: white;
@@ -47,7 +47,7 @@ ul {
   font-size: 3.5rem;
 }
 .toolbar-first-row {
-  background: $df-blue;
+  background: $df-dark-purple;
 }
 @media only screen and (min-width: 768px) {
   .mat-toolbar-row {
