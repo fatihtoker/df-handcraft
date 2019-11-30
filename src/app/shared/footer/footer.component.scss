@@ -1,0 +1,36 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+footer {
+  @include breakpoint(tablet) {
+    padding: 0 32px !important;
+  }
+  @include breakpoint(laptop) {
+    padding: 0 128px !important;
+  }
+  position: relative;
+  height: 64px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: $df-dark-purple;
+  z-index: 1041;
+  .icon-wrapper {
+    color: white;
+    font-size: 26px;
+    height: 50px;
+    width: 50px;
+    transition: all .25s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      color: $df-dark-purple;
+      background-color: white;
+      border-radius: 70%;
+      text-decoration: none;
+    }
+
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}

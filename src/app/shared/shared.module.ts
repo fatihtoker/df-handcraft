@@ -11,6 +11,7 @@ import {SearchComponent} from './search/search.component';
 import {MaterialComponentsModule} from './material-components.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 
   ],
   declarations: [PageComponent, NavbarComponent, ScrollListenerDirective, MouseHoverListenerDirective,
-    SearchComponent, ProductListComponent, ConfirmDialogComponent],
+    SearchComponent, ProductListComponent, ConfirmDialogComponent, FooterComponent],
   exports: [PageComponent, SearchComponent, ProductListComponent, ConfirmDialogComponent],
   providers: [],
   entryComponents: [ConfirmDialogComponent]

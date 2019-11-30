@@ -7,10 +7,10 @@ html {
 
 body {
   background: whitesmoke;
-  height: calc(100vh - 64px);
-  @media (max-width: 599px) {
-    height: calc(100vh - 56px);
-  }
+  // height: calc(100vh - 64px);
+  // @media (max-width: 599px) {
+  //   height: calc(100vh - 56px);
+  // }
   * {
     font-weight: 400;
   }
@@ -19,8 +19,8 @@ body {
   text-align: center;
 }
 .main-container {
-  position: relative;
-  top: 128px;
+  margin-top: 128px;
+  min-height: calc(100vh - 192px);
 }
 .container-fluid {
   padding-left: unset;
@@ -61,7 +61,7 @@ app-navbar {
   right: 1.5em;
   background-color: $df-gold !important;
   font-size: 2rem !important;
-  z-index: 2;
+  z-index: 1040;
   .mat-icon {
     color: white;
   }
