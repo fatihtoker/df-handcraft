@@ -16,5 +16,5 @@ export const environment = {
     bucketName: 'df-prod-images',
     baseURL: 's3.us-east-2.amazonaws.com'
   },
-  phoneNumber: '905367118989'
+  phoneNumber: '905383130883'
 };
