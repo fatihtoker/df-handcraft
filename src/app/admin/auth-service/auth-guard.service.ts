@@ -12,7 +12,7 @@ export class AuthGuardService {
     if (status && status['code'] === 200) {
       return true;
     }
-    window.location.href = 'admin-panel/giris';
+    window.location.href = 'admin-panel/giris/';
     return false;
   }
 }

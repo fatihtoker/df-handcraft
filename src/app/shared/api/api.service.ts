@@ -52,8 +52,8 @@ export class ApiService {
 
     const error: any = { code: code, message: message, errors: errors };
 
-    if (message === 'Expired JWT Token') {
-      location.reload();
+    if (code === 401) {
+      window.location.href = 'admin-panel/giris/'
     }
 
     this.errorSource.next(error);

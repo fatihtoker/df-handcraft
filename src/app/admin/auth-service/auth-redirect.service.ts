@@ -10,7 +10,7 @@ export class AuthRedirectService {
   async canActivate() {
     const status = await this.auth.isAuthenticated();
     if (status && status['code'] === 200) {
-        window.location.href = 'admin-panel';
+        window.location.href = 'admin-panel/';
         return true;
     }
     return true;
